@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<meta charset="utf-8"/>
+<title>abc Online Supermarket - Home Page</title>
+<link rel="stylesheet" href="main website style.css"> <!--All classes refer to this css -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> <!-- Faded Animation reference-->
+</head>
+
+
+<body>
+<img src="Image/Background Logo/Company Logo.png" alt="Company Logo" class="company-logo"> 
+
+<!-- Login function -->
+<button class="login-btn" onclick="document.getElementById('login_form').style.display='block'"><h1><b>Login</b></h1></button>
+<div id="login_form" class="modal">
+  <form class="modal-content animate" action="http://localhost:5000/login" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('login_form').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="Image/Background Logo/Login Logo.png" alt="User" class="user">
+    </div>
+
+    <div class="login_container">
+      <div class="label_font_size">
+      <label><b>Username</b></label>
+        <i>
+          <input type="text" placeholder=" Enter your username" name="user_name" id="user_name" autocomplete="off" required>
+        </i>
+      </div>
+
+      <p class="label_font_size">
+      <label><b>Password</b></label>
+        <i>
+          <input type="password" placeholder=" Enter your password" name="password" id="password" required>
+        </i>
+      </p>
+
+      <p>
+        <b><input type="submit" class="inside-login_btn" value="Login"></b>
+      </p>
+
+      <br>
+      <br>
+       
+    </div> 
+
+      <div class="down_container">
+        <pre style="line-height: 18px">    
+       <a href="abc Online Supermarket - Register Page.html" style="color: blue; font-size: 18px">Sign Up</a>                                <a href="abc Online Supermarket - Find Password.html" style="color: black; cursor: pointer; font-size: 18px">Forget Password?</a>
+        </pre> 
+        <br>      
+      </div>     
+  </form>
+</div>
+<p>
+
+<div class="navigation-bar">
+  <a href="abc Online Supermarket - Home Page.html">Home</a>
+
+  <div class="dropdown">
+    <button class="dropbtn_product_page">Product</button>
+    <div class="dropdown-content">
+      <a href="abc Online Supermarket - Product(Fruits) Page.html">Fruits</a>
+      <a href="abc Online Supermarket - Product(Snacks) Page.html">Snacks</a>
+      <a href="abc Online Supermarket - Product(Drinks and Beverages) Page.html">Drinks and Beverages</a>
+      <a href="abc Online Supermarket - Product(Wines) Page.html">Wines</a>
+      <a href="abc Online Supermarket - Product(Cleaning Supllies, Health and Beauty) Page.html">Cleaning Supplies, Health and Beauty</a>
+      <a href="abc Online Supermarket - Product(Pets) Page.html">Pets</a>
+    </div>
+  </div>  
+
+  <a href="abc Online Supermarket - Contact Us Page.html">Contact Us</a>
+  <a href="abc Online Supermarket - About Us Page.html">About Us</a>
+  <a href="abc Online Supermarket - Jobs Page.html">Jobs</a>
+  <a href="abc Online Supermarket - Register Page.html">Register</a>
+  <a href="abc Online Supermarket - Help Page.html">Help</a>
+
+<form onsubmit="return false">
+  <div class="search-container">
+    <input id="search_product_value" type="text" placeholder="Search a Product" oninput="find_product()" 
+      onmouseleave="not_click_search()" autocomplete="off" required> 
+    <div id="product_list"></div>
+  </div>    
+</div>
+
+  <div class="navigation-bar-search-logo">
+    <input type="image" onclick="search_product()" src="Image/Button Logo/Search Logo.png" alt="search_product" width = 48 height = 43>
+  </div>
+</form>
+
+<div class="shopping-cart-logo">
+  <form action="abc Online Supermarket - Shopping Cart Page.html">
+    <input type="image" src="Image/Button Logo/Shopping Cart Logo.png" alt="shopping cart" width = 55 height = 43>
+    <div id="shopping_cart_logo_notification"></div>
+  </form>
+</div>
+
+
+<p>
+<p>
+
+
+<!-- Information of serach product result (if result found)-->
+<form>
+  <div id="product_info">    </div>
+  <form><div id="comment_button"></div></form>
+  <div id="favourite_button"></div>
+</form>
+
+<!-- Result not found prompt (if result not found)-->
+<div id="no_result_prompt"></div>
+
+
+<script>  
+  if (localStorage.getItem("item_list") == null) 
+    {var photo_list = [];
+     var item_list = []; 
+     var quantity_list = []; 
+     var price_list = [];
+     var subtotal_list = []
+    }
+  else 
+    {var photo_list = [localStorage.getItem("photo_list")];
+     var item_list = [localStorage.getItem("item_list")];
+     var quantity_list = [localStorage.getItem("quantity_list")];
+     var price_list = [localStorage.getItem("price_list")];
+     var subtotal_list = [localStorage.getItem("subtotal_list")]
+    };
+
+
+  //Try to find the result user enters and input the value(information of the result) into the variable 
+  if (localStorage.getItem("product").toLowerCase() == "apple") {
+    photo_src = "Image/Product Logo/Fruits/Apple.png";
+    product_name = "Apple";
+    product_price = 3;
+    product_category = "Fruit";
+    product_brand = "Fruit Daily"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "bananas" || localStorage.getItem("product") == "Bananas (1 comb)") {
+    photo_src = "Image/Product Logo/Fruits/Bananas (1 comb).png";
+    product_name = "Bananas (1 comb)";
+    product_price = 12;
+    product_category = "Fruit";
+    product_brand = "Fruit Daily"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "orange") {
+    photo_src = "Image/Product Logo/Fruits/Orange.png";
+    product_name = "Orange";
+    product_price = 3;
+    product_category = "Fruit";
+    product_brand = "Fruit Daily"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "green grapes" || 
+  localStorage.getItem("product") == "Green Grapes (1 bunch)") {
+    photo_src = "Image/Product Logo/Fruits/Green Grapes (1 bunch).png";
+    product_name = "Green Grapes (1 bunch)";
+    product_price = 40;
+    product_category = "Fruit";
+    product_brand = "Fruit Daily"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "purple grapes" || 
+  localStorage.getItem("product") == "Purple Grapes (1 bunch)") {
+    photo_src = "Image/Product Logo/Fruits/Purple Grades (1 bunch).png";
+    product_name = "Purple Grapes (1 bunch)";
+    product_price = 40;
+    product_category = "Fruit";
+    product_brand = "Fruit Daily"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "cherries" || localStorage.getItem("product") == "Cherries (1 bunch)") {
+    photo_src = "Image/Product Logo/Fruits/Cherries (1 bunch).png";
+    product_name = "Cherries (1 bunch)";
+    product_price = 26;
+    product_category = "Fruit";
+    product_brand = "Fruit Daily"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "kiwi") {
+    photo_src = "Image/Product Logo/Fruits/Kiwi.png";
+    product_name = "Kiwi";
+    product_price = 2;
+    product_category = "Fruit";
+    product_brand = "Fruit Daily"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "lemon") {
+    photo_src = "Image/Product Logo/Fruits/Lemon.png";
+    product_name = "Lemon";
+    product_price = 2;
+    product_category = "Fruit";
+    product_brand = "Fruit Daily"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "mango") {
+    photo_src = "Image/Product Logo/Fruits/Mango.png";
+    product_name = "Mango";
+    product_price = 6;
+    product_category = "Fruit";
+    product_brand = "Fruit Daily"
+    }   
+
+  else if (localStorage.getItem("product").toLowerCase() == "pineapple") {
+    photo_src = "Image/Product Logo/Fruits/Pineapple.png";
+    product_name = "Pineapple";
+    product_price = 22;
+    product_category = "Fruit";
+    product_brand = "Fruit Daily"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "watermelon") {
+    photo_src = "Image/Product Logo/Fruits/Watermelon.png";
+    product_name = "Watermelon";
+    product_price = 30;
+    product_category = "Fruit";
+    product_brand = "Fruit Daily"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "strawberries " || localStorage.getItem("product") == "Strawberries (1lb)") {
+    photo_src = "Image/Product Logo/Fruits/Strawberries (1lb).png";
+    product_name = "Strawberries (1lb)";
+    product_price = 46;
+    product_category = "Fruit";
+    product_brand = "Fruit Daily"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "chocolate bar" || localStorage.getItem("product") == "Chocolate Bar (100g)") {
+    photo_src = "Image/Product Logo/Snacks/Chocolate Bar (100g).png";
+    product_name = "Chocolate Bar (100g)";
+    product_price = 6;
+    product_category = "Snacks";
+    product_brand = "FAVARGER"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "milk chocolate bar" || localStorage.getItem("product") == 
+  "Milk Chocolate Bar (100g)") {
+    photo_src = "Image/Product Logo/Snacks/Milk Chocolate Bar (100g).png";
+    product_name = "Milk Chocolate Bar (100g)";
+    product_price = 6;
+    product_category = "Snacks";
+    product_brand = "Lindt"
+    }    
+
+  else if (localStorage.getItem("product").toLowerCase() == "chocolate biscuit sticks" || localStorage.getItem("product") == 
+  "Chocolate Biscuit Sticks (70g)") {
+    photo_src = "Image/Product Logo/Snacks/Chocolate Biscuit Sticks (70g).png";
+    product_name = "Chocolate Biscuit Sticks (70g)";
+    product_price = 12;
+    product_category = "Snacks";
+    product_brand = "Pocky"
+    }  
+
+  else if (localStorage.getItem("product").toLowerCase() == "cookies & creamBiscuit biscuit sticks" || 
+  localStorage.getItem("product") == "Cookies & Cream Biscuit Sticks (70g)") {
+    photo_src = "Image/Product Logo/Snacks/Cookies & Cream Biscuit Sticks (70g).png";
+    product_name = "Cookies & Cream Biscuit Sticks (70g)";
+    product_price = 12;
+    product_category = "Snacks";
+    product_brand = "Pocky"
+    }   
+
+  else if (localStorage.getItem("product").toLowerCase() == "strawberry biscuit sticks" || localStorage.getItem("product") == 
+  "Strawberry Biscuit Sticks (70g)") {
+    photo_src = "Image/Product Logo/Snacks/Strawberry Biscuit Sticks (70g).png";
+    product_name = "Strawberry Biscuit Sticks (70g)";
+    product_price = 12;
+    product_category = "Snacks";
+    product_brand = "Pocky"
+    }   
+
+  else if (localStorage.getItem("product").toLowerCase() == "chocolate mini swiss roll" || localStorage.getItem("product") == 
+  "Chocolate Mini Swiss Roll (60g)") {
+    photo_src = "Image/Product Logo/Snacks/Chocolate Mini Swiss Roll (60g).png";
+    product_name = "Chocolate Mini Swiss Roll (60g)";
+    product_price = 8;
+    product_category = "Snacks";
+    product_brand = "Garden"
+    }    
+
+  else if (localStorage.getItem("product").toLowerCase() == "peanut mini swiss roll" || localStorage.getItem("product") == 
+    "Peanut Mini Swiss Roll (60g)") {
+    photo_src = "Image/Product Logo/Snacks/Peanut Mini Swiss Roll (60g).png";
+    product_name = "Peanut Mini Swiss Roll (60g)";
+    product_price = 8;
+    product_category = "Snacks";
+    product_brand = "Garden"
+    }   
+
+  else if (localStorage.getItem("product").toLowerCase() == "mango mini swiss roll" || localStorage.getItem("product") == 
+  "Mango Mini Swiss Roll (60g)") {
+    photo_src = "Image/Product Logo/Snacks/Mango Mini Swiss Roll (60g).png";
+    product_name = "Mango Mini Swiss Roll (60g)";
+    product_price = 8;
+    product_category = "Snacks";
+    product_brand = "Garden"
+    }    
+
+  else if (localStorage.getItem("product").toLowerCase() == "lemon mini swiss roll" || localStorage.getItem("product") == 
+  "Lemon Mini Swiss Roll (60g)") {
+    photo_src = "Image/Product Logo/Snacks/Lemon Mini Swiss Roll (60g).png";
+    product_name = "Lemon Mini Swiss Roll (60g)";
+    product_price = 8;
+    product_category = "Snacks";
+    product_brand = "Garden"
+    }    
+
+  else if (localStorage.getItem("product").toLowerCase() == "biscuit roll" || localStorage.getItem("product") == "Biscuit Roll (200g)") {
+    photo_src = "Image/Product Logo/Snacks/Biscuit Roll (200g).png";
+    product_name = "Biscuit Roll (200g)";
+    product_price = 12;
+    product_category = "Snacks";
+    product_brand = "Monteagle"
+    }    
+
+  else if (localStorage.getItem("product").toLowerCase() == "jam biscuit" || localStorage.getItem("product") == "Jam Biscuit (300g)") {
+    photo_src = "Image/Product Logo/Snacks/Jam Biscuit (300g).png";
+    product_name = "Jam Biscuit (300g)";
+    product_price = 35;
+    product_category = "Snacks";
+    product_brand = "KOLSON"
+    }    
+
+  else if (localStorage.getItem("product").toLowerCase() == "cookies" || localStorage.getItem("product") == "Cookies (300g)") {
+    photo_src = "Image/Product Logo/Snacks/Cookies (300g).png";
+    product_name = "Cookies (300g)";
+    product_price = 30;
+    product_category = "Snacks";
+    product_brand = "Chips Ahoy"
+    }    
+
+  else if (localStorage.getItem("product").toLowerCase() == "potato chips" || localStorage.getItem("product") == "Potato Chips (226.8g)") {
+    photo_src = "Image/Product Logo/Snacks/Potato Chips (226.8g).png";
+    product_name = "Potato Chips (226.8g)";
+    product_price = 20;
+    product_category = "Snacks";
+    product_brand = "Lay's"
+    }    
+
+  else if (localStorage.getItem("product").toLowerCase() == "soft candies" || localStorage.getItem("product") == "Soft Candies (116g)") {
+    photo_src = "Image/Product Logo/Snacks/Soft Candies (116g).png";
+    product_name = "Soft Candies (116g)";
+    product_price = 10;
+    product_category = "Snacks";
+    product_brand = "nimm2"
+    }    
+
+  else if (localStorage.getItem("product").toLowerCase() == "marshmallows" || localStorage.getItem("product") == "Marshmallows (150g)") {
+    photo_src = "Image/Product Logo/Snacks/Marshmallows (150g).png";
+    product_name = "Marshmallows (150g)";
+    product_price = 18;
+    product_category = "Snacks";
+    product_brand = "Rocky Mountain"
+    }    
+
+  else if (localStorage.getItem("product").toLowerCase() == "popcorns" || localStorage.getItem("product") == "Popcorns (559.8g)") {
+    photo_src = "Image/Product Logo/Snacks/Popcorns (559.8g).png";
+    product_name = "Popcorns (559.8g)";
+    product_price = 66;
+    product_category = "Snacks";
+    product_brand = "Orville Redenbacher's"
+    }    
+
+  else if (localStorage.getItem("product").toLowerCase() == "lemon tea" || localStorage.getItem("product") == "Lemon Tea (250mL)") {
+    photo_src = "Image/Product Logo/Drinks and Beverages/Lemon Tea (250mL).png";
+    product_name = "Lemon Tea (250mL)";
+    product_price = 4;
+    product_category = "Drinks and Beverages";
+    product_brand = "VITA"
+    }    
+
+  else if (localStorage.getItem("product").toLowerCase() == "lemon tea 6 packs" || localStorage.getItem("product") == 
+  "Lemon Tea (6 packs - 250ml)") {
+    photo_src = "Image/Product Logo/Drinks and Beverages/Lemon Tea (6 packs - 250ml).png";
+    product_name = "Lemon Tea (6 packs - 250ml)";
+    product_price = 20;
+    product_category = "Drinks and Beverages";
+    product_brand = "VITA"
+    } 
+
+  else if (localStorage.getItem("product").toLowerCase() == "milk tea" || localStorage.getItem("product") == "Milk Tea (250ml)") {
+    photo_src = "Image/Product Logo/Drinks and Beverages/Milk Tea (250ml).png";
+    product_name = "Milk Tea (250ml)";
+    product_price = 5;
+    product_category = "Drinks and Beverages";
+    product_brand = "POKKA"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "milk tea 6 packs" || localStorage.getItem("product") == 
+  "Milk Tea (6 packs - 250ml)") {
+    photo_src = "Image/Product Logo/Drinks and Beverages/Milk Tea (6 packs - 250ml).png";
+    product_name = "Milk Tea (6 packs - 250ml)";
+    product_price = 25;
+    product_category = "Drinks and Beverages";
+    product_brand = "POKKA"
+    }    
+
+  else if (localStorage.getItem("product").toLowerCase() == "coca" || localStorage.getItem("product") == "Coca (330ml)") {
+    photo_src = "Image/Product Logo/Drinks and Beverages/Coca (330ml).png";
+    product_name = "Coca (330ml)";
+    product_price = 4;
+    product_category = "Drinks and Beverages";
+    product_brand = "Coca-Cola"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "coca 8 cans" || localStorage.getItem("product") == "Coca (8 cans - 330ml)") {
+    photo_src = "Image/Product Logo/Drinks and Beverages/Coca (8 cans - 330ml).png";
+    product_name = "Coca (8 cans - 330ml)";
+    product_price = 28;
+    product_category = "Drinks and Beverages";
+    product_brand = "Coca-Cola"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "cream soda" || localStorage.getItem("product") == "Cream Soda (330ml)") {
+    photo_src = "Image/Product Logo/Drinks and Beverages/Cream Soda (330ml).png";
+    product_name = "Cream Soda (330ml)";
+    product_price = 4;
+    product_category = "Drinks and Beverages";
+    product_brand = "Schweppes"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "cream soda 8 cans" || localStorage.getItem("product") == 
+  "Cream Soda (8 cans - 330ml)") {
+    photo_src = "Image/Product Logo/Drinks and Beverages/Cream Soda (8 cans - 330ml).png";
+    product_name = "Cream Soda (8 cans - 330ml)";
+    product_price = 28;
+    product_category = "Drinks and Beverages";
+    product_brand = "Schweppes"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "coffee" || localStorage.getItem("product") == "Coffee (240ml)") {
+    photo_src = "Image/Product Logo/Drinks and Beverages/Coffee (240ml).png";
+    product_name = "Coffee (240ml)";
+    product_price = 7;
+    product_category = "Drinks and Beverages";
+    product_brand = "NESCAFE"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "coffee 6 cans" || localStorage.getItem("product") == 
+  "Coffee (6 cans - 240ml)") {
+    photo_src = "Image/Product Logo/Drinks and Beverages/Coffee (6 cans - 240ml).png";
+    product_name = "Coffee (6 cans - 240ml)";
+    product_price = 35;
+    product_category = "Drinks and Beverages";
+    product_brand = "NESCAFE"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "distilled water" || localStorage.getItem("product") == 
+  "Distilled Water (500ml)") {
+    photo_src = "Image/Product Logo/Drinks and Beverages/Distilled Water (500ml).png";
+    product_name = "Distilled Water (500ml)";
+    product_price = 6;
+    product_category = "Drinks and Beverages";
+    product_brand = "Bonaqua"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "mineral water" || localStorage.getItem("product") == 
+  "Mineral Water (500ml)") {
+    photo_src = "Image/Product Logo/Drinks and Beverages/Mineral Water (500ml).png";
+    product_name = "Mineral Water (500ml)";
+    product_price = 6;
+    product_category = "Drinks and Beverages";
+    product_brand = "evian"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "orange juice" || localStorage.getItem("product") == 
+  "Orange Juice (1gal)") {
+    photo_src = "Image/Product Logo/Drinks and Beverages/Orange Juice (1gal).png";
+    product_name = "Orange Juice (1gal)";
+    product_price = 32;
+    product_category = "Drinks and Beverages";
+    product_brand = "Great Value" 
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "apple juice" || localStorage.getItem("product") == 
+  "Apple Juice (1gal)") {
+    photo_src = "Image/Product Logo/Drinks and Beverages/Apple Juice (1gal).png";
+    product_name = "Apple Juice (1gal)";
+    product_price = 32;
+    product_category = "Drinks and Beverages";
+    product_brand = "MOTTS"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "milk" || localStorage.getItem("product") == "Milk (1gal)") {
+    photo_src = "Image/Product Logo/Drinks and Beverages/Milk (1gal).png";
+    product_name = "Milk (1gal)";
+    product_price = 40;
+    product_category = "Drinks and Beverages";
+    product_brand = "Great Value"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "beer" || localStorage.getItem("product") == "Beer (650ml)") {
+    photo_src = "Image/Product Logo/Wines/Beer (650ml).png";
+    product_name = "Beer (650ml)";
+    product_price = 30;
+    product_category = "Wines";
+    product_brand = "Heineken"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "vodka" || localStorage.getItem("product") == "Vodka (1L)") {
+    photo_src = "Image/Product Logo/Wines/Vodka (1L).png";
+    product_name = "Vodka (1L)";
+    product_price = 150;
+    product_category = "Wines";
+    product_brand = "ABSOLUT VODKA"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "champagne" || localStorage.getItem("product") == "Champagne (750ml)") {
+    photo_src = "Image/Product Logo/Wines/Champagne (750ml).png";
+    product_name = "Champagne (750ml)";
+    product_price = 300;
+    product_category = "Wines";
+    product_brand = "MOET"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "grape wine" || localStorage.getItem("product") == "Grape Wine (750ml)") {
+    photo_src = "Image/Product Logo/Wines/Grape Wine (750ml).png";
+    product_name = "Grape Wine (750ml)";
+    product_price = 185;
+    product_category = "Wines";
+    product_brand = "Gallo Family"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "white wine" || localStorage.getItem("product") == "White Wine (750ml)") {
+    photo_src = "Image/Product Logo/Wines/White Wine (750ml).png";
+    product_name = "White Wine (750ml)";
+    product_price = 100;
+    product_category = "Wines";
+    product_brand = "Pyramid Valley"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "red wine" || localStorage.getItem("product") == "Red Wine (750ml)") {
+    photo_src = "Image/Product Logo/Wines/Red Wine (750ml).png";
+    product_name = "Red Wine (750ml)";
+    product_price = 250;
+    product_category = "Wines";
+    product_brand = "MAURO"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "whisky" || localStorage.getItem("product") == "Whisky (375ml)") {
+    photo_src = "Image/Product Logo/Wines/Whisky (375ml).png";
+    product_name = "Whisky (375ml)";
+    product_price = 325;
+    product_category = "Wines";
+    product_brand = "Grown Royal"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "tissues" || localStorage.getItem("product") == "Tissues (7 sheets)") {
+    photo_src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Tissues (7 sheets).png";
+    product_name = "Tissues (7 sheets)";
+    product_price = 3;
+    product_category = "Cleaning Supplies, Health and Beauty";
+    product_brand = "Tempo"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "tissues 18 packs" || localStorage.getItem("product") == 
+  "Tissues (18 packs - 7 sheets)") {
+    photo_src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Tissues (18 packs - 7 sheets).png";
+    product_name = "Tissues (18 packs - 7 sheets)";
+    product_price = 30;
+    product_category = "Cleaning Supplies, Health and Beauty";
+    product_brand = "Tempo"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "box tissues" || localStorage.getItem("product") == 
+  "Box Tissues (90 sheets)") {
+    photo_src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Box Tissues (90 sheets).png";
+    product_name = "Box Tissues (90 sheets)";
+    product_price = 32;
+    product_category = "Cleaning Supplies, Health and Beauty";
+    product_brand = "Tempo"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "toliet paper" || localStorage.getItem("product") == 
+  "Toilet Paper (10 rolls)") {
+    photo_src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Toilet Paper (10 rolls).png";
+    product_name = "Toilet Paper (10 rolls)";
+    product_price = 45;
+    product_category = "Cleaning Supplies, Health and Beauty";
+    product_brand = "Tempo"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "hand towel") {
+    photo_src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Hand Towel.png";
+    product_name = "Hand Towel";
+    product_price = 25;
+    product_category = "Cleaning Supplies, Health and Beauty";
+    product_brand = "HAND"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "cotton tips" || localStorage.getItem("product") == "Cotton Tips (300pcs)") {
+    photo_src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Cotton Tips (300pcs).png";
+    product_name = "Cotton Tips (300pcs)";
+    product_price = 20;
+    product_category = "Cleaning Supplies, Health and Beauty";
+    product_brand = "Cotton Tips"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "body lotion" || localStorage.getItem("product") == "Body Lotion (400ml)") {
+    photo_src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Body Lotion (400ml).png";
+    product_name = "Body Lotion (400ml)";
+    product_price = 40;
+    product_category = "Cleaning Supplies, Health and Beauty";
+    product_brand = "NIVEA"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "shampoo" || localStorage.getItem("product") == "Shampoo (400ml)") {
+    photo_src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Shampoo (400ml).png";
+    product_name = "Shampoo (400ml)";
+    product_price = 22;
+    product_category = "Cleaning Supplies, Health and Beauty";
+    product_brand = "head & shoulders"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "body wash" || localStorage.getItem("product") == "Body Wash (1L)") {
+    photo_src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Body Wash (1L).png";
+    product_name = "Body Wash (1L)";
+    product_price = 34;
+    product_category = "Cleaning Supplies, Health and Beauty";
+    product_brand = Dove
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "toothbrush" || localStorage.getItem("product") == "Toothbrush (3 packs)") {
+    photo_src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Toothbrush (3 packs).png";
+    product_name = "Toothbrush (3 packs)";
+    product_price = 10;
+    product_category = "Cleaning Supplies, Health and Beauty";
+    product_brand = "Colgate"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "toothpaste" || localStorage.getItem("product") == "Toothpaste (170g)") {
+    photo_src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Toothpaste (170g).png";
+    product_name = "Toothpaste (170g)";
+    product_price = 15;
+    product_category = "Cleaning Supplies, Health and Beauty";
+    product_brand = "Colgate"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "hand sanitizer" || localStorage.getItem("product") == 
+  "Hand Sanitizer (520ml)") {
+    photo_src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Hand Sanitizer (520ml).png";
+    product_name = "Hand Sanitizer (520ml)";
+    product_price = 40;
+    product_category = "Cleaning Supplies, Health and Beauty";
+    product_brand = "Walch"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "hand wash" || localStorage.getItem("product") == "Hand Wash (520ml)") {
+    photo_src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Hand Wash (520ml).png";
+    product_name = "Hand Wash (520ml)";
+    product_price = 36;
+    product_category = "Cleaning Supplies, Health and Beauty";
+    product_brand = "Dettol"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "laundry powder" || localStorage.getItem("product") == 
+  "Laundry Powder (1.6kg)") {
+    photo_src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Laundry Powder (1.6kg).png";
+    product_name = "Laundry Powder (1.6kg)";
+    product_price = 80;
+    product_category = "Cleaning Supplies, Health and Beauty";
+    product_brand = "Attack"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "dish soap" || localStorage.getItem("product") == "Dish Soap (828ml)") {
+    photo_src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Dish Soap (828ml).png";
+    product_name = "Dish Soap (828ml)";
+    product_price = 42;
+    product_category = "Cleaning Supplies, Health and Beauty";
+    product_brand = "DAWN"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "floor cleaner" || localStorage.getItem("product") == "Floor Cleaner (2L)") {
+    photo_src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Floor Cleaner (2L).png";
+    product_name = "Floor Cleaner (2L)";
+    product_price = 70;
+    product_category = "Cleaning Supplies, Health and Beauty";
+    product_brand = "LONG LIFE"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "cat food" || localStorage.getItem("product") == "Cat Food - Dry (3kg)") {
+    photo_src = "Image/Product Logo/Pets/Cat Food - Dry (3kg).png";
+    product_name = "Cat Food - Dry (3kg)";
+    product_price = 50;
+    product_category = "Pets";
+    product_brand = "TESCO"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "dog food" || localStorage.getItem("product") == "Dog Food - Dry (3kg)") {
+    photo_src = "Image/Product Logo/Pets/Dog Food - Dry (3kg).png";
+    product_name = "Dog Food - Dry (3kg)";
+    product_price = 50;
+    product_category = "Pets";
+    product_brand = "Pedigree"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "cat treats - chicken" || localStorage.getItem("product") == 
+  "Cat Treats - Chicken (4 packs - 56g)") {
+    photo_src = "Image/Product Logo/Pets/Cat Treats - Chicken (4 packs - 56g).png";
+    product_name = "Cat Treats - Chicken (4 packs - 56g)";
+    product_price = 14;
+    product_category = "Pets";
+    product_brand = "Squeeze up"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "cat threat - salmon soft" || localStorage.getItem("product") == 
+  "Cat Threat - Salmon Soft (482g)") {
+    photo_src = "Image/Product Logo/Pets/Cat Threat - Salmon Soft (482g).png";
+    product_name = "Cat Threat - Salmon Soft (482g)";
+    product_price = 26;
+    product_category = "Pets";
+    product_brand = "Irresistibles"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "dog treat - marrowbone" || localStorage.getItem("product") == 
+  "Dog Treat - Marrowbone (500g)") {
+    photo_src = "Image/Product Logo/Pets/Dog Treat - Marrowbone (500g).png";
+    product_name = "Dog Treat - Marrowbone (500g)";
+    product_price = 22;
+    product_category = "Pets";
+    product_brand = "Pedigree"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "dog treat - biscuits" || localStorage.getItem("product") == 
+  "Dog Treat - Biscuits (500g)") {
+    photo_src = "Image/Product Logo/Pets/Dog Treat - Biscuits (500g).png";
+    product_name = "Dog Treat - Biscuits (500g)";
+    product_price = 25;
+    product_category = "Pets";
+    product_brand = "Pedigree"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "cat accessory - catsan" || localStorage.getItem("product") == 
+  "Cat Accessory - Catsan (5L)") {
+    photo_src = "Image/Product Logo/Pets/Cat Accessory - Catsan (5L).png";
+    product_name = "Cat Accessory - Catsan (5L)";
+    product_price = 62;
+    product_category = "Pets";
+    product_brand = "CATSAN"
+    }
+
+  else if (localStorage.getItem("product").toLowerCase() == "dog accessory - leash and collar" || localStorage.getItem("product") ==
+  "Dog Accessory - Leash & Collar") {
+    photo_src = "Image/Product Logo/Pets/Dog Accessory - Leash & Collar.png";
+    product_name = "Dog Accessory - Leash & Collar";
+    product_price = 150;
+    product_category = "Pets";
+    product_brand = "flexi"
+    };
+
+
+  //Create product information content and also function for adding product to shopping cart
+  try {
+    Product_add_Message = "Product has been added to your shopping cart!";  
+    Warning_Message = "Please enter a positive integer!";
+
+    function empty_input() {
+      if (document.getElementById("quantity").value == "")
+        {document.getElementById("quantity").value = "1"}
+    };
+
+    function add() {
+      if (Number(document.getElementById("quantity").value)>0 & Number.isInteger(Number(document.getElementById("quantity").value))) {
+        alert(Product_add_Message);  
+        photo_list.push(`<img src = "`+photo_src+`" alt="`+product_name+`" width = 90 height = 90>`);
+        item_list.push(product_name);
+        quantity_list.push(Number(document.getElementById("quantity").value));
+        price_list.push("$"+product_price);
+        subtotal_list.push("$"+product_price*(Number(document.getElementById("quantity").value)));
+        localStorage.setItem("photo_list", photo_list);
+        localStorage.setItem("item_list", item_list);
+        localStorage.setItem("quantity_list", quantity_list);
+        localStorage.setItem("price_list", price_list);
+        localStorage.setItem("subtotal_list", subtotal_list);
+        location.reload()
+        }
+      else {
+        document.getElementById("quantity").setCustomValidity(Warning_Message);
+        document.getElementById("quantity").oninput = 
+        function reset_valid() {document.getElementById("quantity").setCustomValidity('')}
+        } 
+    };
+    
+    //Product information
+    document.getElementById("product_info").innerHTML =
+    `
+    <img src="`+photo_src+`" alt="apple" width = 450 height = 450
+    style="position: absolute; left: 50px; top: 220px; border: 3px solid black">
+
+    <p style="font-size: 45px; position: absolute; left: 550px; top: 175px; 
+    text-decoration-color: blue; color: blue"><b><u>`+product_name+`</u></b></p></div>
+
+
+    <div style="font-size: 20px; line-height: 0.5; position: absolute; left: 550px; top: 340px"> 
+      <pre><h3>- Category: <a style="color: red">  `+product_category+`</a></h3></pre>
+      <pre style="margin-top: 25px"><h3>- Price: <a style="color: red">        $`+product_price+`.00</a></h3></pre>
+      <pre style="margin-top: 25px"><h3>- Brand: <a style="color: red; margin-top: 5px">       `+product_brand+`</a></h3></pre>
+    </div>
+
+    <div style="font-size: 40px; position: absolute; left: 550px; top: 510px">
+    Quantity: <input type="number" id="quantity" value="" min="1" max="99" style="font-size: 35px; width: 70px; height: 45px" 
+              onclick="empty_input()" autocomplete="off">
+    </div>
+
+    <div>
+      <button onclick="add()" style="font-size: 20px; padding: 7px; cursor: pointer; position: absolute; left: 840px; top:
+      518px">Add to Cart <img src="Image/Button Logo/Shopping Cart Logo 2.png" alt="shopping cart 2" width = 25 height = 25>
+      </button>
+    </div>    
+    `
+
+    //Comment button
+    document.getElementById("comment_button").innerHTML = 
+    `
+    <input type="image" onclick="()" src="Image/Button Logo/Comment Logo.png" alt="comment button" width = 60 height = 60 
+    style="position: absolute; left: 550px; top: 586px; outline: none">
+    `;
+
+    if (localStorage.getItem("favourite_list") == null) 
+      {var favourite_list = ""}
+    else
+      {var favourite_list = localStorage.getItem("favourite_list")};
+
+    if (favourite_list.split(",").includes(product_name) == true) {
+      document.getElementById("favourite_button").innerHTML = 
+      `
+      <input type="image" onclick="set_favourite_off()" src="Image/Button Logo/Favourite On Logo.jpg" 
+      alt="favourite button on" width = 78 height = 78 
+      style=" position: absolute; left: 630px; top: 575px; outline: none">
+      `
+      }   
+    else {
+      document.getElementById("favourite_button").innerHTML = 
+      `
+      <input type="image" onclick="set_favourite_on()" src="Image/Button Logo/Favourite Off Logo.jpg" 
+      alt="favourite button off" width = 78 height = 78 
+      style=" position: absolute; left: 630px; top: 575px; outline: none">
+      `
+      };
+
+    function set_favourite_on() {
+      favourite_list = [favourite_list];
+      favourite_list.push(product_name);
+      localStorage.setItem("favourite_list", favourite_list);
+      location.reload()
+      };
+
+    function set_favourite_off() {
+      for (i = 0; i < favourite_list.split(",").length; i++) {
+        position = i
+        if (favourite_list.split(",")[position] == product_name) {
+          favourite_list = favourite_list.split(",")
+          favourite_list.splice(position, 1);     
+          localStorage.setItem("favourite_list", favourite_list);
+          location.reload();
+          break
+          }
+        }
+      }
+    }
+
+  //If no result find, there will be error since can't find value of undefined. Then "can;t find search result will display" 
+  catch(err) {
+    document.getElementById("no_result_prompt").innerHTML =
+    `
+    <p style="font-size: 50px; position: absolute; left: 200px; top: 200px">Sorry, we couldn't find the product you want!</p>
+
+    <img src="Image/Background Logo/No Result Logo.png" alt="no result prompt" 
+    width = 300 height = 300 style="position: absolute; left: 570px; top: 330px">
+
+    <img src="Image/Background Logo/Shadow Logo.png" alt="shadow" 
+    width = 350 height = 40 style="position: absolute; left: 570px; top: 620px">
+    `
+    }   
+</script>
+
+
+<script src="Product List and Search Function.js"></script>  <!--All search product list and search function refer to this js -->
+<script src="Cart Logo Change Function.js"></script> <!-- The shopping cart logo will change according to this function -->
+
+</body>
+
+</html> 
+
+<!--//product is from html and product_py is from python, if ther are not equal, that means user have serach another product
+    //so the product data will resend from html to python
+    if (localStorage().getItem("product").toLowerCase() == localStorage().getItem("product_py").toLowerCase()) {}
+    else {
+      //Send product_name to python function, so could get information of database using execute SELECT SQL code 
+      //(SELECT Product_Stock, Product_Total_Sale FROM product WHERE Product_Name = product_name)
+      document.getElementById("product_info_input").value = product_name
+      document.getElementById("product_info_form").submit()} -->
