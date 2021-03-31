@@ -1,2 +1,0 @@
-# abc-Online-Supermarket
-yes
