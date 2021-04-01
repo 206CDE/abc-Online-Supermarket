@@ -319,7 +319,7 @@ def login():
   </form>
 </div>"""
     
-    html_file = open('https://139or148.github.io/abc-Online-Supermarket/Templates/abc%20Online%20Supermarket%20-%20Home%20Page.html')
+    html_file = open('Templates/abc Online Supermarket - Home Page.html')
     old_content = html_file.read()
     new_content = old_content.replace(replace_location, replace_new_value)  
     with open("Templates/abc Online Supermarket - Home Page.html", "w") as html_file:
