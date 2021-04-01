@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<meta charset="utf-8"/>
+<title>abc Online Supermarket - Product(Snacks) Page</title>
+<link rel="stylesheet" href="main website style.css"> <!--All classes refer to this css -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> <!-- Faded Animation reference-->
+</head>
+
+
+<body>
+<img src="Image/Background Logo/Company Logo.png" alt="Company Logo" class="company-logo"> 
+
+<!-- Login function -->
+<button class="login-btn" onclick="document.getElementById('login_form').style.display='block'"><h1><b>Login</b></h1></button>
+<div id="login_form" class="modal">
+  <form class="modal-content animate" action="http://localhost:5000/login" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('login_form').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="Image/Background Logo/Login Logo.png" alt="User" class="user">
+    </div>
+
+    <div class="login_container">
+      <div class="label_font_size">
+      <label><b>Username</b></label>
+        <i>
+          <input type="text" placeholder=" Enter your username" name="user_name" id="user_name" autocomplete="off" required>
+        </i>
+      </div>
+
+      <p class="label_font_size">
+      <label><b>Password</b></label>
+        <i>
+          <input type="password" placeholder=" Enter your password" name="password" id="password" required>
+        </i>
+      </p>
+
+      <p>
+        <b><input type="submit" class="inside-login_btn" value="Login"></b>
+      </p>
+
+      <br>
+      <br>
+       
+    </div> 
+
+      <div class="down_container">
+        <pre style="line-height: 18px">    
+       <a href="abc Online Supermarket - Register Page.html" style="color: blue; font-size: 18px">Sign Up</a>                                <a href="abc Online Supermarket - Find Password.html" style="color: black; cursor: pointer; font-size: 18px">Forget Password?</a>
+        </pre> 
+        <br>      
+      </div>     
+  </form>
+</div>
+<p>
+
+<div class="navigation-bar">
+  <a href="abc Online Supermarket - Home Page.html">Home</a>
+
+  <div class="dropdown">
+      <button class="dropbtn_product_page">Product</button>
+    <div class="dropdown-content">
+      <a href="abc Online Supermarket - Product(Fruits) Page.html">Fruits</a>
+      <a href="abc Online Supermarket - Product(Snacks) Page.html">Snacks</a>
+      <a href="abc Online Supermarket - Product(Drinks and Beverages) Page.html">Drinks and Beverages</a>
+      <a href="abc Online Supermarket - Product(Wines) Page.html">Wines</a>
+      <a href="abc Online Supermarket - Product(Cleaning Supllies, Health and Beauty) Page.html">Cleaning Supplies, Health and Beauty</a>
+      <a href="abc Online Supermarket - Product(Pets) Page.html">Pets</a>
+    </div>
+  </div>  
+
+  <a href="abc Online Supermarket - Contact Us Page.html">Contact Us</a>
+  <a href="abc Online Supermarket - About Us Page.html">About Us</a>
+  <a href="abc Online Supermarket - Jobs Page.html">Jobs</a>
+  <a href="abc Online Supermarket - Register Page.html">Register</a>
+  <a href="abc Online Supermarket - Help Page.html">Help</a>
+
+<form onsubmit="return false">
+  <div class="search-container">
+    <input id="search_product_value" type="text" placeholder="Search a Product" oninput="find_product()" 
+      onmouseleave="not_click_search()" autocomplete="off" required> 
+    <div id="product_list"></div>
+  </div>    
+</div>
+
+  <div class="navigation-bar-search-logo">
+    <input type="image" onclick="search_product()" src="Image/Button Logo/Search Logo.png" alt="search_product" width = 48 height = 43>
+  </div>
+</form>
+
+<div class="shopping-cart-logo">
+  <form action="abc Online Supermarket - Shopping Cart Page.html">
+    <input type="image" src="Image/Button Logo/Shopping Cart Logo.png" alt="shopping cart" width = 55 height = 43>
+    <div id="shopping_cart_logo_notification"></div>
+  </form>
+</div>
+
+<p>
+<p>
+
+
+
+<!-- Table for showing products -->
+<table border = 1 class="product-table">
+<!-- 1st Row-->
+<tr> 
+  <td style="width: 250px"><input type="image" src="Image/Product Logo/Snacks/Chocolate Bar (100g).png" 
+    alt="chocolate_bar" width = 210 height = 210 
+    onclick='localStorage.setItem("product","Chocolate Bar (100g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>
+    <b>Chocolate Bar (100g)</b><p style="color:red"><u>$6.00</u></p></td> 
+
+  <td style="width: 250px"><input type="image" src="Image/Product Logo/Snacks/Milk Chocolate Bar (100g).png" 
+    alt="milk_chocolate_bar" width = 210 height = 210    
+    onclick='localStorage.setItem("product","Milk Chocolate Bar (100g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>
+    <b>Milk Chocolate Bar (100g)</b><p style="color:red"><u>$6.00</u></p></td> 
+
+  <td style="width: 250px"><input type="image" src="Image/Product Logo/Snacks/Chocolate Biscuit Sticks (70g).png" 
+    alt="chocolate_biscuit_sticks" width = 210 height = 210
+    onclick='localStorage.setItem("product","Chocolate Biscuit Sticks (70g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b>Chocolate Biscuit Sticks (70g)</b><p style="color:red"><u>$12.00</u></p></td> 
+
+  <td style="width: 250px"><input type="image" src="Image/Product Logo/Snacks/Cookies & Cream Biscuit Sticks (70g).png" 
+    alt="cookies_and_cream_biscuit_sticks" width = 210 height = 210
+    onclick='localStorage.setItem("product","Cookies & Cream Biscuit Sticks (70g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b>Cookies & Cream Biscuit Sticks (70g)</b><p style="color:red"><u>$12.00</u></p></td>  
+
+  <td style="width: 250px"><input type="image" src="Image/Product Logo/Snacks/Strawberry Biscuit Sticks (70g).png" 
+    alt="strawberry_biscuit_sticks" width = 210 height = 210
+    onclick='localStorage.setItem("product","Strawberry Biscuit Sticks (70g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b style="font-size: 15px">Strawberry Biscuit Sticks (70g)</b><p style="color:red"><u>$12.00</u></p></td>  
+
+  <td style="width: 250px"><input type="image" src="Image/Product Logo/Snacks/Chocolate Mini Swiss Roll (60g).png" 
+    alt="chocolate_mini_swiss_roll" width = 210 height = 210
+    onclick='localStorage.setItem("product","Chocolate Mini Swiss Roll (60g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b style="font-size: 15px">Chocolate Mini Swiss Roll (60g)</b><p style="color:red"><u>$8.00</u></p></td> 
+
+  <td style="width: 250px"><input type="image" src="Image/Product Logo/Snacks/Peanut Mini Swiss Roll (60g).png" 
+    alt="peanut_mini_swiss_roll" width = 210 height = 210
+    onclick='localStorage.setItem("product","Peanut Mini Swiss Roll (60g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b style="font-size: 15px">Peanut Mini Swiss Roll (60g)</b><p style="color:red"><u>$8.00</u></p></td>
+</tr>
+
+
+<!-- 2nd Row-->
+<tr style="height: 40px"> 
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="chocolate_bar_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_chocolate_bar()" autocomplete="off">
+  <input type ="submit" value="Add" onclick="add_chocolate_bar()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="milk_chocolate_bar_quantity" value="" 
+     min="1" max="99" style="width: 45px" onclick="empty_input_milk_chocolate_bar()" autocomplete="off"> 
+  <input type ="submit" value="Add" onclick="add_milk_chocolate_bar()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="chocolate_biscuit_sticks_quantity" value="" 
+     min="1" max="99" style="width: 45px" onclick="empty_input_chocolate_biscuit_sticks()" autocomplete="off">  
+  <input type ="submit" value="Add" onclick="add_chocolate_biscuit_sticks()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="cookies_and_cream_biscuit_sticks_quantity" value="" 
+     min="1" max="99" style="width: 45px" onclick='empty_input_cookies_and_cream_biscuit_sticks()' autocomplete="off">  
+  <input type ="submit" value="Add" onclick="add_cookies_and_cream_biscuit_sticks()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="strawberry_biscuit_sticks_quantity" value="" 
+     min="1" max="99" style="width: 45px" onclick="empty_input_strawberry_biscuit_sticks()" autocomplete="off">  
+  <input type ="submit" value="Add" onclick="add_strawberry_biscuit_sticks()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="chocolate_mini_swiss_roll_quantity" value="" 
+     min="1" max="99" style="width: 45px" onclick="empty_input_chocolate_mini_swiss_roll()" autocomplete="off">  
+  <input type ="submit" value="Add" onclick="add_chocolate_mini_swiss_roll()" style="cursor: pointer"></form>
+  </td>
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="peanut_mini_swiss_roll_quantity" value="" 
+     min="1" max="99" style="width: 45px" onclick="empty_input_peanut_mini_swiss_roll()" autocomplete="off"> 
+  <input type ="submit" value="Add" onclick="add_peanut_mini_swiss_roll()" style="cursor: pointer"></form>
+  </td> 
+</tr>
+
+<!-- 3rd Row-->
+<tr> 
+  <td><input type="image" src="Image/Product Logo/Snacks/Mango Mini Swiss Roll (60g).png" 
+    alt="mango_mini_swiss_roll" width = 210 height = 210 
+    onclick='localStorage.setItem("product","Mango Mini Swiss Roll (60g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>
+    <b>Mango Mini Swiss Roll (60g)</b><p style="color:red"><u>$8.00</u></p></td> 
+
+  <td><input type="image" src="Image/Product Logo/Snacks/Lemon Mini Swiss Roll (60g).png" 
+    alt="lemon_mini_swiss_roll" width = 210 height = 210    
+    onclick='localStorage.setItem("product","Lemon Mini Swiss Roll (60g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>
+    <b>Lemon Mini Swiss Roll (60g)</b><p style="color:red"><u>$8.00</u></p></td> 
+
+  <td><input type="image" src="Image/Product Logo/Snacks/Biscuit Roll (200g).png" 
+    alt="biscuit_roll" width = 210 height = 210
+    onclick='localStorage.setItem("product","Biscuit Roll (200g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b>Biscuit Roll (200g)</b><p style="color:red"><u>$12.00</u></p></td> 
+
+  <td><input type="image" src="Image/Product Logo/Snacks/Jam Biscuit (300g).png" 
+    alt="jam_iscuit" width = 210 height = 210
+    onclick='localStorage.setItem("product","Jam Biscuit (300g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b>Jam Biscuit (300g)</b><p style="color:red"><u>$35.00</u></p></td>  
+
+  <td><input type="image" src="Image/Product Logo/Snacks/Cookies (300g).png" 
+    alt="cookies" width = 210 height = 210
+    onclick='localStorage.setItem("product","Cookies (300g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b>Cookies (300g)</b><p style="color:red"><u>$30.00</u></p></td>  
+
+  <td><input type="image" src="Image/Product Logo/Snacks/Potato Chips (226.8g).png" 
+    alt="potato_chips" width = 210 height = 210
+    onclick='localStorage.setItem("product","Potato Chips (226.8g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b>Potato Chips (226.8g)</b><p style="color:red"><u>$20.00</u></p></td> 
+
+  <td><input type="image" src="Image/Product Logo/Snacks/Soft Candies (116g).png" 
+    alt="soft_candies" width = 210 height = 210
+    onclick='localStorage.setItem("product","Soft Candies (116g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b>Soft Candies (116g)</b><p style="color:red"><u>$10.00</u></p></td>
+</tr>
+
+<!-- 4th Row-->
+<tr style="height: 40px"> 
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="mango_mini_swiss_roll_quantity" value="" 
+    min="1" max="99" style="width: 45px" onclick="empty_input_mango_mini_swiss_roll()" autocomplete="off">
+  <input type ="submit" value="Add" onclick="add_mango_mini_swiss_roll()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="lemon_mini_swiss_roll_quantity" value="" 
+    min="1" max="99" style="width: 45px" onclick="empty_input_lemon_mini_swiss_roll()" autocomplete="off"> 
+  <input type ="submit" value="Add" onclick="add_lemon_mini_swiss_roll()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="biscuit_roll_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_biscuit_roll()" autocomplete="off">  
+  <input type ="submit" value="Add" onclick="add_biscuit_roll()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="jam_iscuit_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_jam_iscuit()" autocomplete="off">  
+  <input type ="submit" value="Add" onclick="add_jam_iscuit()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="cookies_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_cookies()" autocomplete="off">  
+  <input type ="submit" value="Add" onclick="add_cookies()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="potato_chips_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_potato_chips()" autocomplete="off">  
+  <input type ="submit" value="Add" onclick="add_potato_chips()" style="cursor: pointer"></form>
+  </td>
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="soft_candies_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_soft_candies()" autocomplete="off"> 
+  <input type ="submit" value="Add" onclick="add_soft_candies()" style="cursor: pointer"></form>
+  </td> 
+</tr>
+
+<!-- 5th Row-->
+<tr> 
+  <td><input type="image" src="Image/Product Logo/Snacks/Marshmallows (150g).png" 
+    alt="marshmallows" width = 210 height = 210 
+    onclick='localStorage.setItem("product","Marshmallows (150g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>
+    <b>Marshmallows (150g)</b><p style="color:red"><u>$18.00</u></p></td> 
+
+  <td><input type="image" src="Image/Product Logo/Snacks/Popcorns (559.8g).png" 
+    alt="popcorns" width = 210 height = 210    
+    onclick='localStorage.setItem("product","Popcorns (559.8g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>
+    <b>Popcorns (559.8g)</b><p style="color:red"><u>$66.00</u></p></td> 
+</tr>
+
+<!-- 6th Row-->
+<tr style="height: 40px"> 
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="marshmallows_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_marshmallows()" autocomplete="off">
+  <input type ="submit" value="Add" onclick="add_marshmallows()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="popcorns_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_popcorns()" autocomplete="off">
+  <input type ="submit" value="Add" onclick="add_popcorns()" style="cursor: pointer"></form>
+  </td> 
+</tr>
+</table> 
+
+
+<script>
+//Function for input properties and adding product lists to shopping cart
+function empty_input_chocolate_bar(){
+if (document.getElementById("chocolate_bar_quantity").value == "")
+  {document.getElementById("chocolate_bar_quantity").value = "1"}
+};
+
+function empty_input_milk_chocolate_bar(){
+if (document.getElementById("milk_chocolate_bar_quantity").value == "")
+  {document.getElementById("milk_chocolate_bar_quantity").value = "1"}
+};
+
+function empty_input_chocolate_biscuit_sticks(){
+if (document.getElementById("chocolate_biscuit_sticks_quantity").value == "")
+  {document.getElementById("chocolate_biscuit_sticks_quantity").value = "1"}
+};
+
+function empty_input_cookies_and_cream_biscuit_sticks(){
+if (document.getElementById("cookies_and_cream_biscuit_sticks_quantity").value == "")
+  {document.getElementById("cookies_and_cream_biscuit_sticks_quantity").value = "1"}
+};
+
+function empty_input_strawberry_biscuit_sticks(){
+if (document.getElementById("strawberry_biscuit_sticks_quantity").value == "")
+  {document.getElementById("strawberry_biscuit_sticks_quantity").value = "1"}
+};
+
+function empty_input_chocolate_mini_swiss_roll(){
+if (document.getElementById("chocolate_mini_swiss_roll_quantity").value == "")
+  {document.getElementById("chocolate_mini_swiss_roll_quantity").value = "1"}
+};
+
+function empty_input_peanut_mini_swiss_roll(){
+if (document.getElementById("peanut_mini_swiss_roll_quantity").value == "")
+  {document.getElementById("peanut_mini_swiss_roll_quantity").value = "1"}
+};
+
+function empty_input_mango_mini_swiss_roll(){
+if (document.getElementById("mango_mini_swiss_roll_quantity").value == "")
+  {document.getElementById("mango_mini_swiss_roll_quantity").value = "1"}
+};
+
+function empty_input_lemon_mini_swiss_roll(){
+if (document.getElementById("lemon_mini_swiss_roll_quantity").value == "")
+  {document.getElementById("lemon_mini_swiss_roll_quantity").value = "1"}
+};
+
+function empty_input_biscuit_roll(){
+if (document.getElementById("biscuit_roll_quantity").value == "")
+  {document.getElementById("biscuit_roll_quantity").value = "1"}
+};
+
+function empty_input_jam_iscuit(){
+if (document.getElementById("jam_iscuit_quantity").value == "")
+  {document.getElementById("jam_iscuit_quantity").value = "1"}
+};
+
+function empty_input_cookies(){
+if (document.getElementById("cookies_quantity").value == "")
+  {document.getElementById("cookies_quantity").value = "1"}
+};
+
+function empty_input_potato_chips(){
+if (document.getElementById("potato_chips_quantity").value == "")
+  {document.getElementById("potato_chips_quantity").value = "1"}
+};
+
+function empty_input_soft_candies(){
+if (document.getElementById("soft_candies_quantity").value == "")
+  {document.getElementById("soft_candies_quantity").value = "1"}
+};
+
+function empty_input_marshmallows(){
+if (document.getElementById("marshmallows_quantity").value == "")
+  {document.getElementById("marshmallows_quantity").value = "1"}
+};
+
+function empty_input_popcorns(){
+if (document.getElementById("popcorns_quantity").value == "")
+  {document.getElementById("popcorns_quantity").value = "1"}
+};
+
+
+Product_add_Message = "Product has been added to your shopping cart!"; 
+Warning_Message = "Please enter a positive integer!";  
+
+if (localStorage.getItem("item_list") == null) 
+  {var photo_list = [];
+   var item_list = []; 
+   var quantity_list = []; 
+   var price_list = [];
+   var subtotal_list = []
+  }
+else 
+  {var photo_list = [localStorage.getItem("photo_list")];
+   var item_list = [localStorage.getItem("item_list")];
+   var quantity_list = [localStorage.getItem("quantity_list")];
+   var price_list = [localStorage.getItem("price_list")];
+   var subtotal_list = [localStorage.getItem("subtotal_list")]
+  }
+
+function add_chocolate_bar() {
+  if (Number(document.getElementById("chocolate_bar_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("chocolate_bar_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Snacks/Chocolate Bar (100g).png" alt="chocolate_bar" width = 90 height = 90>');
+    item_list.push("Chocolate Bar (100g)");
+    quantity_list.push(Number(document.getElementById("chocolate_bar_quantity").value));
+    price_list.push("$6");
+    subtotal_list.push("$"+6*(Number(document.getElementById("chocolate_bar_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("chocolate_bar_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("chocolate_bar_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("chocolate_bar_quantity").oninput = 
+    function reset_valid() {document.getElementById("chocolate_bar_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_milk_chocolate_bar() {
+  if (Number(document.getElementById("milk_chocolate_bar_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("milk_chocolate_bar_quantity").value))) {
+    alert(Product_add_Message); 
+    photo_list.push('<img src = "Image/Product Logo/Snacks/Milk Chocolate Bar (100g).png" alt="milk_chocolate_bar" width = 90 height = 90>'); 
+    item_list.push("Milk Chocolate Bar (100g)");
+    quantity_list.push(Number(document.getElementById("milk_chocolate_bar_quantity").value));
+    price_list.push("$6");
+    subtotal_list.push("$"+6*(Number(document.getElementById("milk_chocolate_bar_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("milk_chocolate_bar_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("milk_chocolate_bar_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("milk_chocolate_bar_quantity").oninput = 
+    function reset_valid() {document.getElementById("milk_chocolate_bar_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_chocolate_biscuit_sticks() {
+  if (Number(document.getElementById("chocolate_biscuit_sticks_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("chocolate_biscuit_sticks_quantity").value))) {
+    alert(Product_add_Message); 
+    photo_list.push(
+    '<img src = "Image/Product Logo/Snacks/Chocolate Biscuit Sticks (70g).png" alt="chocolate_biscuit_sticks" width = 90 height = 90>'); 
+    item_list.push("Chocolate Biscuit Sticks (70g)");
+    quantity_list.push(Number(document.getElementById("chocolate_biscuit_sticks_quantity").value));
+    price_list.push("$12");
+    subtotal_list.push("$"+12*(Number(document.getElementById("chocolate_biscuit_sticks_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("chocolate_biscuit_sticks_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("chocolate_biscuit_sticks_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("chocolate_biscuit_sticks_quantity").oninput = 
+    function reset_valid() {document.getElementById("chocolate_biscuit_sticks_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_cookies_and_cream_biscuit_sticks() {
+  if (Number(document.getElementById("cookies_and_cream_biscuit_sticks_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("cookies_and_cream_biscuit_sticks_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push(
+    '<img src = "Image/Product Logo/Snacks/Cookies & Cream Biscuit Sticks (70g).png" alt="cookies_and_cream_biscuit_sticks" width = 90 height = 90>');
+    item_list.push("Cookies & Cream Biscuit Sticks (70g)");
+    quantity_list.push(Number(document.getElementById("cookies_and_cream_biscuit_sticks_quantity").value));
+    price_list.push("$12");
+    subtotal_list.push("$"+12*(Number(document.getElementById("cookies_and_cream_biscuit_sticks_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("cookies_and_cream_biscuit_sticks_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("cookies_and_cream_biscuit_sticks_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("cookies_and_cream_biscuit_sticks_quantity").oninput = 
+    function reset_valid() {document.getElementById("cookies_and_cream_biscuit_sticks_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_strawberry_biscuit_sticks() {
+  if (Number(document.getElementById("strawberry_biscuit_sticks_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("strawberry_biscuit_sticks_quantity").value))) {
+    alert(Product_add_Message); 
+    photo_list.push(
+    '<img src = "Image/Product Logo/Snacks/Strawberry Biscuit Sticks (70g).png" alt="strawberry_biscuit_sticks" width = 90 height = 90>'); 
+    item_list.push("Strawberry Biscuit Sticks (70g)");
+    quantity_list.push(Number(document.getElementById("strawberry_biscuit_sticks_quantity").value));
+    price_list.push("$12");
+    subtotal_list.push("$"+12*(Number(document.getElementById("strawberry_biscuit_sticks_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("strawberry_biscuit_sticks_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("strawberry_biscuit_sticks_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("strawberry_biscuit_sticks_quantity").oninput = 
+    function reset_valid() {document.getElementById("strawberry_biscuit_sticks_quantity").setCustomValidity('')} 
+    }    
+  }; 
+
+function add_chocolate_mini_swiss_roll() {  
+  if (Number(document.getElementById("chocolate_mini_swiss_roll_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("chocolate_mini_swiss_roll_quantity").value))) {
+    alert(Product_add_Message); 
+    photo_list.push(
+    '<img src = "Image/Product Logo/Snacks/Chocolate Mini Swiss Roll (60g).png" alt="chocolate_mini_swiss_roll" width = 90 height = 90>'); 
+    item_list.push("Chocolate Mini Swiss Roll (60g)");
+    quantity_list.push(Number(document.getElementById("chocolate_mini_swiss_roll_quantity").value));
+    price_list.push("$8");
+    subtotal_list.push("$"+8*(Number(document.getElementById("chocolate_mini_swiss_roll_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("chocolate_mini_swiss_roll_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("chocolate_mini_swiss_roll_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("chocolate_mini_swiss_roll_quantity").oninput = 
+    function reset_valid() {document.getElementById("chocolate_mini_swiss_roll_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_peanut_mini_swiss_roll() {  
+  if (Number(document.getElementById("peanut_mini_swiss_roll_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("peanut_mini_swiss_roll_quantity").value))) {
+    alert(Product_add_Message);
+    photo_list.push(
+    '<img src = "Image/Product Logo/Snacks/Peanut Mini Swiss Roll (60g).png" alt="peanut_mini_swiss_roll" width = 90 height = 90>');  
+    item_list.push("Peanut Mini Swiss Roll (60g)");
+    quantity_list.push(Number(document.getElementById("peanut_mini_swiss_roll_quantity").value));
+    price_list.push("$8");
+    subtotal_list.push("$"+8*(Number(document.getElementById("peanut_mini_swiss_roll_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("peanut_mini_swiss_roll_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("peanut_mini_swiss_roll_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("peanut_mini_swiss_roll_quantity").oninput = 
+    function reset_valid() {document.getElementById("peanut_mini_swiss_roll_quantity").setCustomValidity('')} 
+    }   
+  };
+
+function add_mango_mini_swiss_roll() {  
+  if (Number(document.getElementById("mango_mini_swiss_roll_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("mango_mini_swiss_roll_quantity").value))) {
+    alert(Product_add_Message); 
+    photo_list.push('<img src = "Image/Product Logo/Snacks/Mango Mini Swiss Roll (60g).png" alt="mango_mini_swiss_roll" width = 90 height = 90>'); 
+    item_list.push("Mango Mini Swiss Roll (60g)");
+    quantity_list.push(Number(document.getElementById("mango_mini_swiss_roll_quantity").value));
+    price_list.push("$8");
+    subtotal_list.push("$"+8*(Number(document.getElementById("mango_mini_swiss_roll_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("mango_mini_swiss_roll_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("mango_mini_swiss_roll_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("mango_mini_swiss_roll_quantity").oninput = 
+    function reset_valid() {document.getElementById("mango_mini_swiss_roll_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_lemon_mini_swiss_roll() {  
+  if (Number(document.getElementById("lemon_mini_swiss_roll_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("lemon_mini_swiss_roll_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Snacks/Lemon Mini Swiss Roll (60g).png" alt="lemon_mini_swiss_roll" width = 90 height = 90>');
+    item_list.push("Lemon Mini Swiss Roll (60g)");
+    quantity_list.push(Number(document.getElementById("lemon_mini_swiss_roll_quantity").value));
+    price_list.push("$8");
+    subtotal_list.push("$"+8*(Number(document.getElementById("lemon_mini_swiss_roll_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("lemon_mini_swiss_roll_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("lemon_mini_swiss_roll_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("lemon_mini_swiss_roll_quantity").oninput = 
+    function reset_valid() {document.getElementById("lemon_mini_swiss_roll_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_biscuit_roll() { 
+  if (Number(document.getElementById("biscuit_roll_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("biscuit_roll_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Snacks/Biscuit Roll (200g).png" alt="biscuit_roll" width = 90 height = 90>');
+    item_list.push("Biscuit Roll (200g)");
+    quantity_list.push(Number(document.getElementById("biscuit_roll_quantity").value));
+    price_list.push("$12");
+    subtotal_list.push("$"+12*(Number(document.getElementById("biscuit_roll_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("biscuit_roll_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("biscuit_roll_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("biscuit_roll_quantity").oninput = 
+    function reset_valid() {document.getElementById("biscuit_roll_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_jam_iscuit() { 
+  if (Number(document.getElementById("jam_iscuit_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("jam_iscuit_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Snacks/Jam Biscuit (300g).png" alt="jam_iscuit" width = 90 height = 90>');
+    item_list.push("Jam Biscuit (300g)");
+    quantity_list.push(Number(document.getElementById("jam_iscuit_quantity").value));
+    price_list.push("$35");
+    subtotal_list.push("$"+35*(Number(document.getElementById("jam_iscuit_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("jam_iscuit_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("jam_iscuit_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("jam_iscuit_quantity").oninput = 
+    function reset_valid() {document.getElementById("jam_iscuit_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_cookies() { 
+  if (Number(document.getElementById("cookies_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("cookies_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Snacks/Cookies (300g).png" alt="cookies" width = 90 height = 90>');
+    item_list.push("Cookies (300g)");
+    quantity_list.push(Number(document.getElementById("cookies_quantity").value));
+    price_list.push("$30");
+    subtotal_list.push("$"+30*(Number(document.getElementById("cookies_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("cookies_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("cookies_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("cookies_quantity").oninput = 
+    function reset_valid() {document.getElementById("cookies_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_potato_chips() { 
+  if (Number(document.getElementById("potato_chips_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("potato_chips_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Snacks/Potato Chips (226.8g).png" alt="potato_chips" width = 90 height = 90>');
+    item_list.push("Potato Chips (226.8g)");
+    quantity_list.push(Number(document.getElementById("potato_chips_quantity").value));
+    price_list.push("$20");
+    subtotal_list.push("$"+20*(Number(document.getElementById("potato_chips_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("potato_chips_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("potato_chips_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("potato_chips_quantity").oninput = 
+    function reset_valid() {document.getElementById("potato_chips_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_soft_candies() { 
+  if (Number(document.getElementById("soft_candies_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("soft_candies_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Snacks/Soft Candies (116g).png" alt="soft_candies" width = 90 height = 90>');
+    item_list.push("Soft Candies (116g)");
+    quantity_list.push(Number(document.getElementById("soft_candies_quantity").value));
+    price_list.push("$10");
+    subtotal_list.push("$"+10*(Number(document.getElementById("soft_candies_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("soft_candies_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("soft_candies_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("soft_candies_quantity").oninput = 
+    function reset_valid() {document.getElementById("soft_candies_quantity").setCustomValidity('')} 
+    }    
+  };
+
+ function add_marshmallows() { 
+  if (Number(document.getElementById("marshmallows_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("marshmallows_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Snacks/Marshmallows (150g).png" alt="marshmallows" width = 90 height = 90>');
+    item_list.push("Marshmallows (150g)");
+    quantity_list.push(Number(document.getElementById("marshmallows_quantity").value));
+    price_list.push("$18");
+    subtotal_list.push("$"+18*(Number(document.getElementById("marshmallows_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("marshmallows_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("marshmallows_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("marshmallows_quantity").oninput = 
+    function reset_valid() {document.getElementById("marshmallows_quantity").setCustomValidity('')} 
+    };    
+  };
+
+function add_popcorns() { 
+  if (Number(document.getElementById("popcorns_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("popcorns_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Snacks/Popcorns (559.8g).png" alt="popcorns" width = 90 height = 90>');
+    item_list.push("Popcorns (559.8g)");
+    quantity_list.push(Number(document.getElementById("popcorns_quantity").value));
+    price_list.push("$66");
+    subtotal_list.push("$"+66*(Number(document.getElementById("popcorns_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("popcorns_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("popcorns_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("popcorns_quantity").oninput = 
+    function reset_valid() {document.getElementById("popcorns_quantity").setCustomValidity('')} 
+    }    
+  }
+</script>
+
+
+<script src="Product List and Search Function.js"></script>  <!--All search product list and search function refer to this js -->
+<script src="Cart Logo Change Function.js"></script> <!-- The shopping cart logo will change according to this function -->
+
+<br>
+<br>
+</body>
+
+</html>
