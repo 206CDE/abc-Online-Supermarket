@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<meta charset="utf-8"/>
+<title>abc Online Supermarket - Product(Cleaning Supllies, Health and Beauty) Page</title>
+<link rel="icon" href="Image/Background Logo/Company Logo 2.png"> <!-- Icon -->
+<link rel="stylesheet" href="main website style.css"> <!-- All classes refer to this css -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> <!-- Faded Animation reference -->
+</head>
+
+
+<body>
+<img src="Image/Background Logo/Company Logo.png" alt="Company Logo" class="company-logo"> 
+
+<!-- Login function -->
+<button class="login-btn" onclick="document.getElementById('login_form').style.display='block'"><h1><b>Login</b></h1></button>
+<div id="login_form" class="modal">
+  <form class="modal-content animate" action="http://localhost:5000/login" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('login_form').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="Image/Background Logo/Login Logo.png" alt="User" class="user">
+    </div>
+
+    <div class="login_container">
+      <div class="label_font_size">
+      <label><b>Username</b></label>
+        <i>
+          <input type="text" placeholder=" Enter your username" name="user_name" id="user_name" autocomplete="off" required>
+        </i>
+      </div>
+
+      <p class="label_font_size">
+      <label><b>Password</b></label>
+        <i>
+          <input type="password" placeholder=" Enter your password" name="password" id="password" required>
+        </i>
+      </p>
+
+      <p>
+        <b><input type="submit" class="inside-login_btn" value="Login"></b>
+      </p>
+
+      <br>
+      <br>
+       
+    </div> 
+
+      <div class="down_container">
+        <pre style="line-height: 18px">    
+       <a href="abc Online Supermarket - Register Page.html" style="color: blue; font-size: 18px">Sign Up</a>                                <a href="abc Online Supermarket - Find Password.html" style="color: black; cursor: pointer; font-size: 18px">Forget Password?</a>
+        </pre> 
+        <br>      
+      </div>     
+  </form>
+</div>
+<p>
+
+<div class="navigation-bar">
+  <a href="abc Online Supermarket - Home Page.html">Home</a>
+
+  <div class="dropdown">
+      <button class="dropbtn_product_page">Product</button>
+    <div class="dropdown-content">
+      <a href="abc Online Supermarket - Product(Fruits) Page.html">Fruits</a>
+      <a href="abc Online Supermarket - Product(Snacks) Page.html">Snacks</a>
+      <a href="abc Online Supermarket - Product(Drinks and Beverages) Page.html">Drinks and Beverages</a>
+      <a href="abc Online Supermarket - Product(Wines) Page.html">Wines</a>
+      <a href="abc Online Supermarket - Product(Cleaning Supllies, Health and Beauty) Page.html">Cleaning Supplies, Health and Beauty</a>
+      <a href="abc Online Supermarket - Product(Pets) Page.html">Pets</a>
+    </div>
+  </div>  
+
+  <a href="abc Online Supermarket - Contact Us Page.html">Contact Us</a>
+  <a href="abc Online Supermarket - About Us Page.html">About Us</a>
+  <a href="abc Online Supermarket - Jobs Page.html">Jobs</a>
+  <a href="abc Online Supermarket - Register Page.html">Register</a>
+  <a href="abc Online Supermarket - Help Page.html">Help</a>
+  
+<form onsubmit="return false">
+  <div class="search-container">
+    <input id="search_product_value" type="text" placeholder="Search a Product" oninput="find_product()" 
+      onmouseleave="not_click_search()" autocomplete="off" required> 
+    <div id="product_list"></div>
+  </div>    
+</div>
+
+  <div class="navigation-bar-search-logo">
+    <input type="image" onclick="search_product()" src="Image/Button Logo/Search Logo.png" alt="search_product" width = 48 height = 43>
+  </div>
+</form>
+
+<div class="shopping-cart-logo">
+  <form action="abc Online Supermarket - Shopping Cart Page.html">
+    <input type="image" src="Image/Button Logo/Shopping Cart Logo.png" alt="shopping cart" width = 55 height = 43>
+    <div id="shopping_cart_logo_notification"></div>
+  </form>
+</div>
+
+<p>
+<p>
+
+
+
+<!-- Table for showing products -->
+<table border = 1 class="product-table">
+<!-- 1st Row-->
+<tr> 
+  <td style="width: 250px"><input type="image" src="Image/Product Logo/Cleaning Supplies; Health and Beauty/Tissues (7 sheets).png" 
+    alt="tissues" width = 210 height = 210 
+    onclick='localStorage.setItem("product","Tissues (7 sheets)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>
+    <b>Tissues (7 sheets)</b><p style="color:red"><u>$3.00</u></p></td> 
+
+  <td style="width: 250px">
+    <input type="image" src="Image/Product Logo/Cleaning Supplies; Health and Beauty/Tissues (18 packs - 7 sheets).png" 
+    alt="tissues_18_packs" width = 210 height = 210    
+    onclick='localStorage.setItem("product","Tissues (18 packs - 7 sheets)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>
+    <b>Tissues (18 packs - 7 sheets)</b><p style="color:red"><u>$30.00</u></p></td> 
+
+  <td style="width: 250px"><input type="image" src="Image/Product Logo/Cleaning Supplies; Health and Beauty/Box Tissues (90 sheets).png" 
+    alt="box_tissues" width = 210 height = 210
+    onclick='localStorage.setItem("product","Box Tissues (90 sheets)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b style="font-size: 15px">Box Tissues (90 sheets)</b><p style="color:red"><u>$32.00</u></p></td>
+
+  <td style="width: 250px"><input type="image" src="Image/Product Logo/Cleaning Supplies; Health and Beauty/Toilet Paper (10 rolls).png" 
+    alt="toilet_paper" width = 210 height = 210
+    onclick='localStorage.setItem("product","Toilet Paper (10 rolls)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b>Toilet Paper (10 rolls)</b><p style="color:red"><u>$45.00</u></p></td> 
+
+  <td style="width: 250px"><input type="image" src="Image/Product Logo/Cleaning Supplies; Health and Beauty/Hand Towel.png" 
+    alt="hand_towel" width = 210 height = 210
+    onclick='localStorage.setItem("product","Hand Towel"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b>Hand Towel</b><p style="color:red"><u>$25.00</u></p></td>  
+
+  <td style="width: 250px"><input type="image" src="Image/Product Logo/Cleaning Supplies; Health and Beauty/Cotton Tips (300pcs).png" 
+    alt="cotton_tips" width = 210 height = 210
+    onclick='localStorage.setItem("product","Cotton Tips (300pcs)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b style="font-size: 15px">Cotton Tips (300pcs)</b><p style="color:red"><u>$20.00</u></p></td>  
+
+  <td style="width: 250px"><input type="image" src="Image/Product Logo/Cleaning Supplies; Health and Beauty/Body Lotion (400ml).png" 
+    alt="body_lotion" width = 210 height = 210
+    onclick='localStorage.setItem("product","Body Lotion (400ml)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b style="font-size: 15px">Body Lotion (400ml)</b><p style="color:red"><u>$40.00</u></p></td>
+</tr>
+
+
+<!-- 2nd Row-->
+<tr style="height: 40px"> 
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="tissues_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_tissues()" autocomplete="off">
+  <input type ="submit" value="Add" onclick="add_tissues()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="tissues_18_packs_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_tissues_18_packs()" autocomplete="off"> 
+  <input type ="submit" value="Add" onclick="add_tissues_18_packs()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="box_tissues_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_box_tissues()" autocomplete="off"> 
+  <input type ="submit" value="Add" onclick="add_box_tissues()" style="cursor: pointer"></form>
+  </td>   
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="toilet_paper_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_toilet_paper()" autocomplete="off">  
+  <input type ="submit" value="Add" onclick="add_toilet_paper()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="hand_towel_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_hand_towel()" autocomplete="off">  
+  <input type ="submit" value="Add" onclick="add_hand_towel()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="cotton_tips_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_cotton_tips()" autocomplete="off">  
+  <input type ="submit" value="Add" onclick="add_cotton_tips()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="body_lotion_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_body_lotion()" autocomplete="off">  
+  <input type ="submit" value="Add" onclick="add_body_lotion()" style="cursor: pointer"></form>
+  </td>
+</tr>
+
+<!-- 3rd Row-->
+<tr> 
+  <td><input type="image" src="Image/Product Logo/Cleaning Supplies; Health and Beauty/Shampoo (400ml).png" 
+    alt="shampoo" width = 210 height = 210 
+    onclick='localStorage.setItem("product","Shampoo (400ml)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>
+    <b>Shampoo (400ml)</b><p style="color:red"><u>$22.00</u></p></td> 
+
+  <td><input type="image" src="Image/Product Logo/Cleaning Supplies; Health and Beauty/Body Wash (1L).png" 
+    alt="body_wash" width = 210 height = 210    
+    onclick='localStorage.setItem("product","Body Wash (1L)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>
+    <b>Body Wash (1L)</b><p style="color:red"><u>$34.00</u></p></td> 
+
+  <td><input type="image" src="Image/Product Logo/Cleaning Supplies; Health and Beauty/Toothbrush (3 packs).png" 
+    alt="toothbrush" width = 210 height = 210
+    onclick='localStorage.setItem("product","Toothbrush (3 packs)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b>Toothbrush (3 packs)</b><p style="color:red"><u>$10.00</u></p></td> 
+
+  <td><input type="image" src="Image/Product Logo/Cleaning Supplies; Health and Beauty/Toothpaste (170g).png" 
+    alt="toothpaste" width = 210 height = 210
+    onclick='localStorage.setItem("product","Toothpaste (170g)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b>Toothpaste (170g)</b><p style="color:red"><u>$15.00</u></p></td>  
+
+  <td><input type="image" src="Image/Product Logo/Cleaning Supplies; Health and Beauty/Hand Sanitizer (520ml).png" 
+    alt="hand_sanitizer" width = 210 height = 210
+    onclick='localStorage.setItem("product","Hand Sanitizer (520ml)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b>Hand Sanitizer (520ml)</b><p style="color:red"><u>$40.00</u></p></td>  
+
+  <td><input type="image" src="Image/Product Logo/Cleaning Supplies; Health and Beauty/Hand Wash (520ml).png" 
+    alt="hand_wash" width = 210 height = 210
+    onclick='localStorage.setItem("product","Hand Wash (520ml)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b>Hand Wash (520ml)</b><p style="color:red"><u>$36.00</u></p></td> 
+
+  <td><input type="image" src="Image/Product Logo/Cleaning Supplies; Health and Beauty/Laundry Powder (1.6kg).png" 
+    alt="laundry_powder" width = 210 height = 210
+    onclick='localStorage.setItem("product","Laundry Powder (1.6kg)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>    
+    <b>Laundry Powder (1.6kg)</b><p style="color:red"><u>$80.00</u></p></td>
+</tr>
+
+<!-- 4th Row-->
+<tr style="height: 40px"> 
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="shampoo_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_shampoo()" autocomplete="off">
+  <input type ="submit" value="Add" onclick="add_shampoo()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="body_wash_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_body_wash()" autocomplete="off"> 
+  <input type ="submit" value="Add" onclick="add_body_wash()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="toothbrush_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_toothbrush()" autocomplete="off">  
+  <input type ="submit" value="Add" onclick="add_toothbrush()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="toothpaste_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_toothpaste()" autocomplete="off">  
+  <input type ="submit" value="Add" onclick="add_toothpaste()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="hand_sanitizer_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_hand_sanitizer()" autocomplete="off">  
+  <input type ="submit" value="Add" onclick="add_hand_sanitizer()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="hand_wash_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_hand_wash()" autocomplete="off">  
+  <input type ="submit" value="Add" onclick="add_hand_wash()" style="cursor: pointer"></form>
+  </td>
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="laundry_powder_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_laundry_powder()" autocomplete="off"> 
+  <input type ="submit" value="Add" onclick="add_laundry_powder()" style="cursor: pointer"></form>
+  </td> 
+</tr>
+
+<!-- 5th Row-->
+<tr> 
+  <td><input type="image" src="Image/Product Logo/Cleaning Supplies; Health and Beauty/Dish Soap (828ml).png" 
+    alt="dish_soap" width = 210 height = 210 
+    onclick='localStorage.setItem("product","Dish Soap (828ml)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>
+    <b>Dish Soap (828ml)</b><p style="color:red"><u>$42.00</u></p></td> 
+
+  <td><input type="image" src="Image/Product Logo/Cleaning Supplies; Health and Beauty/Floor Cleaner (2L).png" 
+    alt="floor_cleaner" width = 210 height = 210    
+    onclick='localStorage.setItem("product","Floor Cleaner (2L)"); 
+    window.location.href = "abc Online Supermarket - Serach Product Page.html"'><br>
+    <b>Floor Cleaner (2L)</b><p style="color:red"><u>$70.00</u></p></td> 
+</tr>
+
+<!-- 6th Row-->
+<tr style="height: 40px"> 
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="dish_soap_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_dish_soap()" autocomplete="off">
+  <input type ="submit" value="Add" onclick="add_dish_soap()" style="cursor: pointer"></form>
+  </td> 
+
+  <td>
+  <form onsubmit="return false">Quantity: <input type="number" id="floor_cleaner_quantity" value="" min="1" max="99" style="width: 45px" 
+    onclick="empty_input_floor_cleaner()" autocomplete="off"> 
+  <input type ="submit" value="Add" onclick="add_floor_cleaner()" style="cursor: pointer"></form>
+  </td> 
+</tr>
+</table> 
+
+
+<script>
+//Function for input properties and adding product lists to shopping cart
+function empty_input_tissues(){
+if (document.getElementById("tissues_quantity").value == "")
+  {document.getElementById("tissues_quantity").value = "1"}
+};
+
+function empty_input_tissues_18_packs(){
+if (document.getElementById("tissues_18_packs_quantity").value == "")
+  {document.getElementById("tissues_18_packs_quantity").value = "1"}
+};
+
+function empty_input_box_tissues(){
+if (document.getElementById("box_tissues_quantity").value == "")
+  {document.getElementById("box_tissues_quantity").value = "1"}
+};
+
+function empty_input_toilet_paper(){
+if (document.getElementById("toilet_paper_quantity").value == "")
+  {document.getElementById("toilet_paper_quantity").value = "1"}
+};
+
+function empty_input_hand_towel(){
+if (document.getElementById("hand_towel_quantity").value == "")
+  {document.getElementById("hand_towel_quantity").value = "1"}
+};
+
+function empty_input_cotton_tips(){
+if (document.getElementById("cotton_tips_quantity").value == "")
+  {document.getElementById("cotton_tips_quantity").value = "1"}
+};
+
+function empty_input_body_lotion(){
+if (document.getElementById("body_lotion_quantity").value == "")
+  {document.getElementById("body_lotion_quantity").value = "1"}
+};
+
+function empty_input_shampoo(){
+if (document.getElementById("shampoo_quantity").value == "")
+  {document.getElementById("shampoo_quantity").value = "1"}
+};
+
+function empty_input_body_wash(){
+if (document.getElementById("body_wash_quantity").value == "")
+  {document.getElementById("body_wash_quantity").value = "1"}
+};
+
+function empty_input_toothbrush(){
+if (document.getElementById("toothbrush_quantity").value == "")
+  {document.getElementById("toothbrush_quantity").value = "1"}
+};
+
+function empty_input_toothpaste(){
+if (document.getElementById("toothpaste_quantity").value == "")
+  {document.getElementById("toothpaste_quantity").value = "1"}
+};
+
+function empty_input_hand_sanitizer(){
+if (document.getElementById("hand_sanitizer_quantity").value == "")
+  {document.getElementById("hand_sanitizer_quantity").value = "1"}
+};
+
+function empty_input_hand_wash(){
+if (document.getElementById("hand_wash_quantity").value == "")
+  {document.getElementById("hand_wash_quantity").value = "1"}
+};
+
+function empty_input_laundry_powder(){
+if (document.getElementById("laundry_powder_quantity").value == "")
+  {document.getElementById("laundry_powder_quantity").value = "1"}
+};
+
+function empty_input_dish_soap(){
+if (document.getElementById("dish_soap_quantity").value == "")
+  {document.getElementById("dish_soap_quantity").value = "1"}
+};
+
+function empty_input_floor_cleaner(){
+if (document.getElementById("floor_cleaner_quantity").value == "")
+  {document.getElementById("floor_cleaner_quantity").value = "1"}
+};
+
+
+Product_add_Message = "Product has been added to your shopping cart!"; 
+Warning_Message = "Please enter a positive integer!";  
+
+if (localStorage.getItem("item_list") == null) 
+  {var photo_list = [];
+   var item_list = []; 
+   var quantity_list = []; 
+   var price_list = [];
+   var subtotal_list = []
+  }
+else 
+  {var photo_list = [localStorage.getItem("photo_list")];
+   var item_list = [localStorage.getItem("item_list")];
+   var quantity_list = [localStorage.getItem("quantity_list")];
+   var price_list = [localStorage.getItem("price_list")];
+   var subtotal_list = [localStorage.getItem("subtotal_list")]
+  };
+
+function add_tissues() {
+  if (Number(document.getElementById("tissues_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("tissues_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Tissues (7 sheets).png" alt="tissues" width = 90 height = 90>');
+    item_list.push("Tissues (7 sheets)");
+    quantity_list.push(Number(document.getElementById("tissues_quantity").value));
+    price_list.push("$3");
+    subtotal_list.push("$"+3*(Number(document.getElementById("tissues_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("tissues_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("tissues_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("tissues_quantity").oninput = 
+    function reset_valid() {document.getElementById("tissues_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_tissues_18_packs() {
+  if (Number(document.getElementById("tissues_18_packs_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("tissues_18_packs_quantity").value))) {
+    alert(Product_add_Message); 
+    photo_list.push('<img src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Tissues (18 packs - 7 sheets).png" alt="tissues_18_packs" width = 90 height = 90>'); 
+    item_list.push("Tissues (18 packs - 7 sheets)");
+    quantity_list.push(Number(document.getElementById("tissues_18_packs_quantity").value));
+    price_list.push("$30");
+    subtotal_list.push("$"+30*(Number(document.getElementById("tissues_18_packs_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("tissues_18_packs_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("tissues_18_packs_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("tissues_18_packs_quantity").oninput = 
+    function reset_valid() {document.getElementById("tissues_18_packs_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_box_tissues() {
+  if (Number(document.getElementById("box_tissues_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("box_tissues_quantity").value))) {
+    alert(Product_add_Message); 
+    photo_list.push(
+    '<img src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Box Tissues (90 sheets).png" alt="box_tissues" width = 90 height = 90>'); 
+    item_list.push("Box Tissues (90 sheets)");
+    quantity_list.push(Number(document.getElementById("box_tissues_quantity").value));
+    price_list.push("$32");
+    subtotal_list.push("$"+32*(Number(document.getElementById("box_tissues_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("box_tissues_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("box_tissues_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("box_tissues_quantity").oninput = 
+    function reset_valid() {document.getElementById("box_tissues_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_toilet_paper() {
+  if (Number(document.getElementById("toilet_paper_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("toilet_paper_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push(
+    '<img src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Toilet Paper (10 rolls).png" alt="toilet_paper" width = 90 height = 90>');
+    item_list.push("Toilet Paper (10 rolls)");
+    quantity_list.push(Number(document.getElementById("toilet_paper_quantity").value));
+    price_list.push("$45");
+    subtotal_list.push("$"+45*(Number(document.getElementById("toilet_paper_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("toilet_paper_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("toilet_paper_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("toilet_paper_quantity").oninput = 
+    function reset_valid() {document.getElementById("toilet_paper_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_hand_towel() {
+  if (Number(document.getElementById("hand_towel_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("hand_towel_quantity").value))) {
+    alert(Product_add_Message); 
+    photo_list.push(
+    '<img src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Hand Towel.png" alt="hand_towel" width = 90 height = 90>'); 
+    item_list.push("Hand Towel");
+    quantity_list.push(Number(document.getElementById("hand_towel_quantity").value));
+    price_list.push("$25");
+    subtotal_list.push("$"+25*(Number(document.getElementById("hand_towel_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("hand_towel_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("hand_towel_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("hand_towel_quantity").oninput = 
+    function reset_valid() {document.getElementById("hand_towel_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_cotton_tips() {  
+  if (Number(document.getElementById("cotton_tips_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("cotton_tips_quantity").value))) {
+    alert(Product_add_Message); 
+    photo_list.push(
+    '<img src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Cotton Tips (300pcs).png" alt="cotton_tips" width = 90 height = 90>'); 
+    item_list.push("Cotton Tips (300pcs)");
+    quantity_list.push(Number(document.getElementById("cotton_tips_quantity").value));
+    price_list.push("$20");
+    subtotal_list.push("$"+20*(Number(document.getElementById("cotton_tips_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("cotton_tips_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("cotton_tips_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("cotton_tips_quantity").oninput = 
+    function reset_valid() {document.getElementById("cotton_tips_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_body_lotion() {  
+  if (Number(document.getElementById("body_lotion_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("body_lotion_quantity").value))) {
+    alert(Product_add_Message);
+    photo_list.push(
+    '<img src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Body Lotion (400ml).png" alt="body_lotion" width = 90 height = 90>');  
+    item_list.push("Body Lotion (400ml)");
+    quantity_list.push(Number(document.getElementById("body_lotion_quantity").value));
+    price_list.push("$40");
+    subtotal_list.push("$"+40*(Number(document.getElementById("body_lotion_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("body_lotion_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("body_lotion_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("body_lotion_quantity").oninput = 
+    function reset_valid() {document.getElementById("body_lotion_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_shampoo() {  
+  if (Number(document.getElementById("shampoo_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("shampoo_quantity").value))) {
+    alert(Product_add_Message); 
+    photo_list.push('<img src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Shampoo (400ml).png" alt="shampoo_roll" width = 90 height = 90>'); 
+    item_list.push("Shampoo (400ml)");
+    quantity_list.push(Number(document.getElementById("shampoo_quantity").value));
+    price_list.push("$22");
+    subtotal_list.push("$"+22*(Number(document.getElementById("shampoo_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("shampoo_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("shampoo_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("shampoo_quantity").oninput = 
+    function reset_valid() {document.getElementById("shampoo_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_body_wash() {  
+  if (Number(document.getElementById("body_wash_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("body_wash_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Body Wash (1L).png" alt="body_wash" width = 90 height = 90>');
+    item_list.push("Lemon Mini Swiss Roll (60g)");
+    quantity_list.push(Number(document.getElementById("body_wash_quantity").value));
+    price_list.push("$34");
+    subtotal_list.push("$"+34*(Number(document.getElementById("body_wash_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("body_wash_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("body_wash_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("body_wash_quantity").oninput = 
+    function reset_valid() {document.getElementById("body_wash_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_toothbrush() { 
+  if (Number(document.getElementById("toothbrush_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("toothbrush_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Toothbrush (3 packs).png" alt="toothbrush" width = 90 height = 90>');
+    item_list.push("Toothbrush (3 packs)");
+    quantity_list.push(Number(document.getElementById("toothbrush_quantity").value));
+    price_list.push("$10");
+    subtotal_list.push("$"+10*(Number(document.getElementById("toothbrush_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("toothbrush_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("toothbrush_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("toothbrush_quantity").oninput = 
+    function reset_valid() {document.getElementById("toothbrush_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_toothpaste() { 
+  if (Number(document.getElementById("toothpaste_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("toothpaste_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Toothpaste (170g).png" alt="toothpaste" width = 90 height = 90>');
+    item_list.push("Toothpaste (170g)");
+    quantity_list.push(Number(document.getElementById("toothpaste_quantity").value));
+    price_list.push("$15");
+    subtotal_list.push("$"+15*(Number(document.getElementById("toothpaste_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("toothpaste_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("toothpaste_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("toothpaste_quantity").oninput = 
+    function reset_valid() {document.getElementById("toothpaste_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_hand_sanitizer() { 
+  if (Number(document.getElementById("hand_sanitizer_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("hand_sanitizer_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Hand Sanitizer (520ml).png" alt="hand_sanitizer" width = 90 height = 90>');
+    item_list.push("Hand Sanitizer (520ml)");
+    quantity_list.push(Number(document.getElementById("hand_sanitizer_quantity").value));
+    price_list.push("$40");
+    subtotal_list.push("$"+40*(Number(document.getElementById("hand_sanitizer_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("hand_sanitizer_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("hand_sanitizer_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("hand_sanitizer_quantity").oninput = 
+    function reset_valid() {document.getElementById("hand_sanitizer_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_hand_wash() { 
+  if (Number(document.getElementById("hand_wash_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("hand_wash_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Hand Wash (520ml).png" alt="hand_wash" width = 90 height = 90>');
+    item_list.push("Hand Wash (520ml)");
+    quantity_list.push(Number(document.getElementById("hand_wash_quantity").value));
+    price_list.push("$36");
+    subtotal_list.push("$"+36*(Number(document.getElementById("hand_wash_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("hand_wash_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("hand_wash_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("hand_wash_quantity").oninput = 
+    function reset_valid() {document.getElementById("hand_wash_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_laundry_powder() { 
+  if (Number(document.getElementById("laundry_powder_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("laundry_powder_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Laundry Powder (1.6kg).png" alt="laundry_powder" width = 90 height = 90>');
+    item_list.push("Laundry Powder (1.6kg)");
+    quantity_list.push(Number(document.getElementById("laundry_powder_quantity").value));
+    price_list.push("$80");
+    subtotal_list.push("$"+80*(Number(document.getElementById("laundry_powder_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("laundry_powder_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("laundry_powder_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("laundry_powder_quantity").oninput = 
+    function reset_valid() {document.getElementById("laundry_powder_quantity").setCustomValidity('')} 
+    }    
+  };
+
+ function add_dish_soap() { 
+  if (Number(document.getElementById("dish_soap_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("dish_soap_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Dish Soap (828ml).png" alt="dish_soap" width = 90 height = 90>');
+    item_list.push("Dish Soap (828ml)");
+    quantity_list.push(Number(document.getElementById("dish_soap_quantity").value));
+    price_list.push("$42");
+    subtotal_list.push("$"+42*(Number(document.getElementById("dish_soap_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("dish_soap_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("dish_soap_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("dish_soap_quantity").oninput = 
+    function reset_valid() {document.getElementById("dish_soap_quantity").setCustomValidity('')} 
+    }    
+  };
+
+function add_floor_cleaner() { 
+  if (Number(document.getElementById("floor_cleaner_quantity").value)>0 & 
+  Number.isInteger(Number(document.getElementById("floor_cleaner_quantity").value))) {
+    alert(Product_add_Message);  
+    photo_list.push('<img src = "Image/Product Logo/Cleaning Supplies; Health and Beauty/Floor Cleaner (2L).png" alt="floor_cleaner" width = 90 height = 90>');
+    item_list.push("Floor Cleaner (2L)");
+    quantity_list.push(Number(document.getElementById("floor_cleaner_quantity").value));
+    price_list.push("$70");
+    subtotal_list.push("$"+70*(Number(document.getElementById("floor_cleaner_quantity").value)));
+    localStorage.setItem("photo_list", photo_list);
+    localStorage.setItem("item_list", item_list);
+    localStorage.setItem("quantity_list", quantity_list);
+    localStorage.setItem("price_list", price_list);
+    localStorage.setItem("subtotal_list", subtotal_list)
+    document.getElementById("floor_cleaner_quantity").value = "";
+    location.reload()    
+    }
+  else {
+    document.getElementById("floor_cleaner_quantity").setCustomValidity(Warning_Message);
+    document.getElementById("floor_cleaner_quantity").oninput = 
+    function reset_valid() {document.getElementById("floor_cleaner_quantity").setCustomValidity('')} 
+    }    
+  }
+</script>
+
+
+<script src="Product List and Search Function.js"></script>  <!--All search product list and search function refer to this js -->
+<script src="Cart Logo Change Function.js"></script> <!-- The shopping cart logo will change according to this function -->
+
+<br>
+<br>
+</body>
+
+</html>

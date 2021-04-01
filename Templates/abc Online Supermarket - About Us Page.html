@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>  
+<meta charset="utf-8"/>
+<title>abc Online Supermarket - About Us Page</title>
+<link rel="icon" href="Image/Background Logo/Company Logo 2.png"> <!-- Icon -->
+<link rel="stylesheet" href="main website style.css"> <!-- All classes refer to this css -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> <!-- Faded Animation reference -->
+</head>
+
+
+<body>
+<img src="Image/Background Logo/Company Logo.png" alt="Company Logo" class="company-logo"> 
+
+<!-- Login function -->
+<button class="login-btn" onclick="document.getElementById('login_form').style.display='block'"><h1><b>Login</b></h1></button>
+<div id="login_form" class="modal">
+  <form class="modal-content animate" action="http://localhost:5000/login" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('login_form').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="Image/Background Logo/Login Logo.png" alt="User" class="user">
+    </div>
+
+    <div class="login_container">
+      <div class="label_font_size">
+      <label><b>Username</b></label>
+        <i>
+          <input type="text" placeholder=" Enter your username" name="user_name" id="user_name" autocomplete="off" required>
+        </i>
+      </div>
+
+      <p class="label_font_size">
+      <label><b>Password</b></label>
+        <i>
+          <input type="password" placeholder=" Enter your password" name="password" id="password" required>
+        </i>
+      </p>
+
+      <p>
+        <b><input type="submit" class="inside-login_btn" value="Login"></b>
+      </p>
+
+      <br>
+      <br>
+       
+    </div> 
+
+      <div class="down_container">
+        <pre style="line-height: 18px">    
+       <a href="abc Online Supermarket - Register Page.html" style="color: blue; font-size: 18px">Sign Up</a>                                <a href="abc Online Supermarket - Find Password.html" style="color: black; cursor: pointer; font-size: 18px">Forget Password?</a>
+        </pre> 
+        <br>      
+      </div>     
+  </form>
+</div>
+<p>
+
+<div class="navigation-bar">
+  <a href="abc Online Supermarket - Home Page.html">Home</a>
+
+  <div class="dropdown">
+    <button class="dropbtn_non_product_page">Product</button>
+    <div class="dropdown-content">
+      <a href="abc Online Supermarket - Product(Fruits) Page.html">Fruits</a>
+      <a href="abc Online Supermarket - Product(Snacks) Page.html">Snacks</a>
+      <a href="abc Online Supermarket - Product(Drinks and Beverages) Page.html">Drinks and Beverages</a>
+      <a href="abc Online Supermarket - Product(Wines) Page.html">Wines</a>
+      <a href="abc Online Supermarket - Product(Cleaning Supllies, Health and Beauty) Page.html">Cleaning Supplies, Health and Beauty</a>
+      <a href="abc Online Supermarket - Product(Pets) Page.html">Pets</a>
+    </div>
+  </div>  
+
+  <a href="abc Online Supermarket - Contact Us Page.html">Contact Us</a>
+  <a class="active" href="abc Online Supermarket - About Us Page.html">About Us</a>
+  <a href="abc Online Supermarket - Jobs Page.html">Jobs</a>
+  <a href="abc Online Supermarket - Register Page.html">Register</a>
+  <a href="abc Online Supermarket - Help Page.html">Help</a>
+
+<form onsubmit="return false">
+  <div class="search-container">
+    <input id="search_product_value" type="text" placeholder="Search a Product" oninput="find_product()" 
+      onmouseleave="not_click_search()" autocomplete="off" required> 
+    <div id="product_list"></div>
+  </div>    
+</div>
+
+  <div class="navigation-bar-search-logo">
+    <input type="image" onclick="search_product()" src="Image/Button Logo/Search Logo.png" alt="search_product" width = 48 height = 43>
+  </div>
+</form>
+
+<div class="shopping-cart-logo">
+  <form action="abc Online Supermarket - Shopping Cart Page.html">
+    <input type="image" src="Image/Button Logo/Shopping Cart Logo.png" alt="shopping cart" width = 55 height = 43>
+    <div id="shopping_cart_logo_notification"></div>
+  </form>
+</div>
+
+
+<pre style="font-size: 45px; text-align: center; position: absolute; top: 345px; left: 320px"><b>A <i style="color: red">Time-Honoured</i>
+Brand</b></pre>
+
+<img src="Image/Background Logo/Company Logo 2.png" alt="Company Logo 2" width=200 height=200 style="position: absolute; 
+top: 200px; left: 400px"></td>
+<img src="Image/Background Logo/Supermarket Logo.png" alt="Supermarket Logo" width=430 height=300 style="position: absolute; 
+top: 200px; left: 750px; border-radius: 20px;"></td>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<hr style="height: 2px; border-width:0; color: gray; background-color: gray; width:75%; margin-left: auto; margin-right: auto">
+
+<pre style="font-size: 20px; color: red; text-align: center; position: absolute; top: 550px; left: 220px"><u>High Quality of Services</u></pre>
+<pre style="font-size: 20px; color: red; text-align: center; position: absolute; top: 550px; left: 595px"><u>Aims</u></pre>
+<pre style="font-size: 20px; color: red; text-align: center; position: absolute; top: 550px; left: 770px"><u>New Online Service</u></pre>
+<pre style="font-size: 20px; color: red; text-align: center; position: absolute; top: 550px; left: 1035px"><u>10 Years of History</u></pre>
+
+<img src="Image/Background Logo/4 Description/High Quality Logo.png" alt="High Quality Logo" 
+width=200 height=200 style="position: absolute; top: 600px; left: 250px">
+<img src="Image/Background Logo/4 Description/Aims Logo.png" alt="Aims Logo" 
+width=200 height=200 style="position: absolute; top: 600px; left: 520px">
+<img src="Image/Background Logo/4 Description/Online Shopping Logo.png" alt="Online Shopping Logo" 
+width=200 height=200 style="position: absolute; top: 600px; left: 770px">
+<img src="Image/Background Logo/4 Description/History Logo.png" alt="History Logo Logo" 
+width=200 height=200 style="position: absolute; top: 600px; left: 1040px">
+
+<div style="width: 200px; position: absolute; top: 800px; left: 255px; text-align: center; word-wrap: break-word">
+Enjoy your most 
+convenient, fast and simple 
+shopping experience!
+</div>
+
+<div style="width: 220px; position: absolute; top: 800px; left: 515px; text-align: justify; word-wrap: break-word">
+We aim to provide a enjoyable 
+shopping experience to our customers.
+For years, we have satisfy most of
+our customers by providing the best services,
+including sale, delivery and more.
+And we will keep improving our service to 
+impress on our dear customers!
+</div>
+
+<div style="width: 220px; position: absolute; top: 800px; left: 775px; text-align: justify; word-wrap: break-word">
+Experience our whole new online
+shopping service. With more than 50
+products to purchase online, and the
+convenient delivery service to save your time. 
+</div>
+
+<div style="width: 220px; position: absolute; top: 800px; left: 1035px; text-align: justify; word-wrap: break-word">
+<b><i>10 Years Anniversary!</i></b>
+-
+From 2011, we have alraedy established for 10 years.
+Since the early years, we have 
+sold numbers of our products and 
+served more than thousands of our customers.
+Till now, we have already esablished 24 local branches
+in Hong Kong Island, Kowloon and New Territories to serve 
+our customers that living in differnet places.
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<script src="Product List and Search Function.js"></script>  <!--All search product list and search function refer to this js -->
+<script src="Cart Logo Change Function.js"></script> <!-- The shopping cart logo will change according to this function -->
+
+</body>
+
+</html>
