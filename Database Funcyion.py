@@ -1,4 +1,3 @@
-from github import Github
 import webbrowser
 import datetime
 import pymysql
