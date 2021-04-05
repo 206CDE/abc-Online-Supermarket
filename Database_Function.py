@@ -19,7 +19,7 @@ CUR = DB.cursor()
 app = Flask(__name__)
 
            
-@app.route("/send_job_request", methods = ['GET'])
+@app.route("/send_job_request", methods = ['POST'])
 def send_job_request():
   name  = str(request.form['name'])
   tel   = str(request.form['tel'])
