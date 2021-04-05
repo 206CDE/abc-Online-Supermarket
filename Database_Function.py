@@ -10,8 +10,7 @@ DB = pymysql.connect(
   host = "127.0.0.1",
   user = "Manager",
   password = "E79G3T07J2",
-  database = "abc supermarket database",
-  port = 5000
+  database = "abc supermarket database"
 )
 CUR = DB.cursor() 
 
