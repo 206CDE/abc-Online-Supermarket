@@ -656,7 +656,6 @@ total_price = Math.floor(total_price*1)"""
 
 
 if __name__=='__main__':
-  app.run()
+  app.run(port=5000)
 
 DB.close()
-#https://stackoverflow.com/questions/48251473/how-to-write-to-a-specific-position-inside-a-html-in-python  
