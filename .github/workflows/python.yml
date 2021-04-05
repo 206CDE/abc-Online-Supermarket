@@ -2,7 +2,7 @@ name: scraper-san-juan-gobierno
 
 on:
   schedule:
-    - cron: '0 3 * * *' # runs at 00:00 UTC everyday
+    - cron: '0 3 * * *' # runs at 03:00 UTC everyday
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          python sj-gobierno.py
+          python Database_Function.py
 
       - name: commit files
         run: |
