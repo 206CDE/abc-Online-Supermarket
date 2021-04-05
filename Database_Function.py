@@ -9,7 +9,8 @@ from flask import Flask, render_template, redirect, url_for, request
 DB = pymysql.connect(
   user = "abc_Supermarket",
   password = "E79G3T07J2",
-  database = "abc supermarket database"
+  database = "abc supermarket database",
+  port =  "3306"
 )
 CUR = DB.cursor() 
 
