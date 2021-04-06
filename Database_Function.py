@@ -7,7 +7,7 @@ from flask import Flask, render_template, redirect, url_for, request
 
 #Connect to the database
 DB = pymysql.connect(
-  host = "127.0.0.139",
+  host = "127.4.1.139",
   user = "root",
   #password = "",
   #database = "abc supermarket database"
