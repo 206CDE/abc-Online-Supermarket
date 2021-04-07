@@ -1,12 +1,12 @@
 import webbrowser
 import datetime
-import pymysql
+import mysql.connector
 from flask import Flask, render_template, redirect, url_for, request
 
 
 
 #Connect to the database
-DB = pymysql.connect(
+DB = mysql.connector.connect(
   host = "127.0.139.148",  
   port = 3306,
   user = "abc_Supermarket",
