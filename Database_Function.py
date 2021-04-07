@@ -7,8 +7,8 @@ from flask import Flask, render_template, redirect, url_for, request
 
 #Connect to the database
 DB = mysql.connector.connect(
-  host = "localhost",  
-  port = 3306,
+  host = "127.0.139.148",  
+  port = 80443,
   user = "abc_Supermarket",
   password = "E79G3T07J2",  
   database = "abc supermarket database"
