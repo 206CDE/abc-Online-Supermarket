@@ -1,18 +1,18 @@
 import webbrowser
 import datetime
-import mysql.connector
+import pymysql
 from flask import Flask, render_template, redirect, url_for, request
 
 
 
-#Connect to the database
-#DB = mysql.connector.connect( 
-  #host = "127.0.0.1",
-  #user = "abc_Supermarket",
-  #password = "E79G3T07J2",  
-  #database = "abc supermarket database"
-#)
-#CUR = DB.cursor() 
+Connect to the database
+DB = pymysql.connect( 
+  host = "127.0.0.1",
+  user = "abc_Supermarket",
+  password = "E79G3T07J2",  
+  database = "abc supermarket database"
+)
+CUR = DB.cursor() 
 
 
 
