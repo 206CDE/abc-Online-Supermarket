@@ -13,7 +13,7 @@ else if (window.screen.width <= 768)
   {document.body.style.zoom="50%"}
 
 else if (window.screen.width <= 800)
-  {document.body.style.zoom="13%"}
+  {document.body.style.zoom="52%"}
 
 else if (window.screen.width <= 854)
   {document.body.style.zoom="56%"}
