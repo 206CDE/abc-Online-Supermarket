@@ -139,18 +139,6 @@ img.user {
   }
 }
 
-@media screen and (max-width: 1470px) {
-  .modal {display: none}
-}
-
-@media screen and (max-width: 1470px) {
-  .modal-content {display: none}
-}
-
-@media screen and (max-width: 1470px) {
-  .login-container {display: none}
-  }
-
 .navigation-bar {
   overflow: hidden;
   background-color: #e9e9e9;
@@ -245,22 +233,6 @@ img.user {
   left: 1350px;
   top: 133px
 }
-
-@media screen and (max-width: 950px) {
-  .navigation-bar a:nth-child(7) {display: none}
-  }
-
-@media screen and (max-width: 850px) {
-  .navigation-bar a:nth-child(6) {display: none}
-  }
-
-@media screen and (max-width: 750px) {
-  .navigation-bar a:nth-child(5) {display: none}
-  }
-
-@media screen and (max-width: 650px) {
-  .navigation-bar a:nth-child(4) {display: none}
-  }
 
 #ul { /*For searching result*/
   list-style-type: none;
