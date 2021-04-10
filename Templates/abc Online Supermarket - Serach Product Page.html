@@ -12,7 +12,6 @@
 
 
 <body>
-<script src="Zoom Resize Function.js"></script>  <!-- Before displaying content, resize the screen based on the resolutions -->  
 <img src="Image/Background Logo/Company Logo.png" alt="Company Logo" class="company-logo"> 
 
 <!-- Login function -->
@@ -105,11 +104,9 @@
 
 
 <!-- Information of serach product result (if result found)-->
-<form>
-  <div id="product_info">    </div>
-  <form><div id="comment_button"></div></form>
-  <div id="favourite_button"></div>
-</form>
+<div id="product_info"></div>
+<form action="http://localhost:5000/comment" method="post"><div id="comment_button"></div></form>
+<div id="favourite_button"></div>
 
 <!-- Result not found prompt (if result not found)-->
 <div id="no_result_prompt"></div>
@@ -818,8 +815,8 @@
     //Comment button
     document.getElementById("comment_button").innerHTML = 
     `
-    <input type="image" onclick="()" src="Image/Button Logo/Comment Logo.png" alt="comment button" width = 60 height = 60 
-    style="position: absolute; left: 550px; top: 586px; outline: none">
+    <input type="image" src="Image/Button Logo/Comment Logo.png" alt="comment button" width = 60 height = 60 
+    style="position: absolute; left: 550px; top: 586px; outline: none"">
     `;
 
     if (localStorage.getItem("favourite_list") == null) 
