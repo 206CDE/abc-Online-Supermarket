@@ -90,7 +90,7 @@ def member_register():
               </body></html>"""
 
   except:
-    #If error exist, it means the user has enter an existed user name
+    #If error exist, it means the user has enter an existed user name, since user name is pkey
     return """<html><body>
                 <script>
                   alert('This user name already exists');
