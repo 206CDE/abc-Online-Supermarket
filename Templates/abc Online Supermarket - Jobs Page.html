@@ -12,7 +12,6 @@
 
 
 <body>
-<script src="Zoom Resize Function.js"></script>  <!-- Before displaying content, resize the screen based on the resolutions --> 
 <img src="Image/Background Logo/Company Logo.png" alt="Company Logo" class="company-logo"> 
 
 <!-- Login function -->
@@ -123,36 +122,36 @@ top: 440px; left: 1150px; z-index: -1"></td>
 
 <script>
 function delivery_description() {
-  if (document.getElementById("delivery").value == "deliveryman") {
+  if (document.getElementById("delivery").value == "Deliveryman") {
     document.getElementById("delivery work type").innerHTML =`Work Type: <u>Full time (Mon - Sun)</u>`
     document.getElementById("delivery work time").innerHTML =`Work Time: <u>10:00a.m. - 8:00p.m.</u>`
-    document.getElementById("delivery salary").innerHTML =`Salary: <u>$1,5000 - $1,7000</u>`
+    document.getElementById("delivery salary").innerHTML =`Salary: <u>$1,5000 - $1,7000/month</u>`
   }
 
-  else if (document.getElementById("delivery").value == "checker") {
+  else if (document.getElementById("delivery").value == "Checker") {
     document.getElementById("delivery work type").innerHTML =`Work Type: <u>Full time (Mon - Sun)</u>`
     document.getElementById("delivery work time").innerHTML =`Work Time: <u>12:00a.m. - 11:00p.m.</u>`
-    document.getElementById("delivery salary").innerHTML =`Salary: <u>$1,6000 - $1,8000</u>`
+    document.getElementById("delivery salary").innerHTML =`Salary: <u>$1,6000 - $1,8000/month</u>`
   }
 
   else {
     document.getElementById("delivery work type").innerHTML =`Work Type: <u>Full time (Mon - Sun)</u>`
     document.getElementById("delivery work time").innerHTML =`Work Time: <u>10:00a.m. - 9:00p.m.</u>`
-    document.getElementById("delivery salary").innerHTML =`Salary: <u>$1,4000 - $1,8000</u>`
+    document.getElementById("delivery salary").innerHTML =`Salary: <u>$1,4000 - $1,8000/month</u>`
   }    
 };
 
 function sale_description() {
-  if (document.getElementById("sale").value == "sale assistant (full time)") {
+  if (document.getElementById("sale").value == "Sale Assistant (full time)") {
     document.getElementById("sale work type").innerHTML =`Work Type: <u>Full time (Mon - Sun)</u>`
     document.getElementById("sale work time").innerHTML =`Work Time: <u>9:00a.m. - 8:00p.m.</u>`
-    document.getElementById("sale salary").innerHTML =`Salary: <u>$1,4000 - $1,9000</u>`
+    document.getElementById("sale salary").innerHTML =`Salary: <u>$1,4000 - $1,9000/month</u>`
   }
 
-  else if (document.getElementById("sale").value == "senior sale assistant") {
+  else if (document.getElementById("sale").value == "Senior Sale Assistant") {
     document.getElementById("sale work type").innerHTML =`Work Type: <u>Full time (Mon - Sun)</u>`
     document.getElementById("sale work time").innerHTML =`Work Time: <u>9:00a.m. - 11:00p.m.</u>`
-    document.getElementById("sale salary").innerHTML =`Salary: <u>$1,8000 - $2,5000</u>`
+    document.getElementById("sale salary").innerHTML =`Salary: <u>$1,8000 - $2,5000/month</u>`
   }
 
   else {
@@ -163,22 +162,22 @@ function sale_description() {
 };
 
 function operative_description() {
-  if (document.getElementById("operative").value == "warehouseman") {
+  if (document.getElementById("operative").value == "Warehouseman") {
     document.getElementById("operative work type").innerHTML =`Work Type: <u>Full time (Mon - Sun)</u>`
     document.getElementById("operative work time").innerHTML =`Work Time: <u>10:00a.m. - 8:00p.m.</u>`
-    document.getElementById("operative salary").innerHTML =`Salary: <u>$1,9000 - $2,7000</u>`
+    document.getElementById("operative salary").innerHTML =`Salary: <u>$1,9000 - $2,7000/month</u>`
   }
 
-  else if (document.getElementById("operative").value == "production operative") {
+  else if (document.getElementById("operative").value == "Production Operative") {
     document.getElementById("operative work type").innerHTML =`Work Type: <u>Full time (Mon - Sun)</u>`
     document.getElementById("operative work time").innerHTML =`Work Time: <u>9:00a.m. - 10:00p.m.</u>`
-    document.getElementById("operative salary").innerHTML =`Salary: <u>$1,7000 - $2,2000</u>`
+    document.getElementById("operative salary").innerHTML =`Salary: <u>$1,7000 - $2,2000/month</u>`
   }
 
   else {
     document.getElementById("operative work type").innerHTML =`Work Type: <u>Full time (Mon - Sun)</u>`
     document.getElementById("operative work time").innerHTML =`Work Time: <u>9:00a.m. - 8:00p.m.</u>`
-    document.getElementById("operative salary").innerHTML =`Salary: <u>$1,5000 - $1,9000</u>`
+    document.getElementById("operative salary").innerHTML =`Salary: <u>$1,5000 - $1,9000/month</u>`
   }    
 }
 </script>
@@ -366,7 +365,7 @@ function valid_check() {
 <!-- Use the login form "modal" as a reference of apply form-->
 <div id="apply_div" class="modal">
   <form id="apply_form" class="modal-content animate" action="http://localhost:5000/send_job_request" 
-  style="height: 694px; margin: -3% auto 0% auto" method="POST">
+  style="height: 694px; margin: -3% auto 0% auto" method="post">
   </form>
 </div>
 
