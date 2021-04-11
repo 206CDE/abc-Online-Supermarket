@@ -135,7 +135,7 @@ def send_order():
 
   product_price  = str(request.form['product_price_input'])
   shipping_price = str(request.form['shipping_price_input'])
-  discount       = "0%"
+  discount       = "N/A"
   total_price    = str(request.form['total_price_input'])
   
   try:
